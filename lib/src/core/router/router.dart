@@ -1,4 +1,3 @@
-import 'package:auth/src/injector.dart';
 import 'package:auth/src/core/configs/get_platform.dart';
 import 'package:auth/src/core/network/api_client.dart';
 import 'package:auth/src/core/router/app_routes.dart';
@@ -9,6 +8,7 @@ import 'package:auth/src/features/auth/presentation/view/signin_page.dart';
 import 'package:auth/src/features/auth/presentation/view/signup_page.dart';
 import 'package:auth/src/features/home/presentation/home_page.dart';
 import 'package:auth/src/features/settings/presentation/view/settings_view.dart';
+import 'package:auth/src/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
