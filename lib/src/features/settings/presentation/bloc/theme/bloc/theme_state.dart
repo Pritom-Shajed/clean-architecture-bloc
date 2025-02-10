@@ -5,7 +5,6 @@ class ThemeState {
 
   ThemeState({required this.theme});
 
-  // Copy method (since we are not using Equatable)
   ThemeState copyWith({ThemeProfile? theme}) {
     return ThemeState(theme: theme ?? this.theme);
   }
