@@ -5,5 +5,6 @@
     "performanceOverlay": "Performance Overlay",
     "theme":"Theme",
     "urlConfig": "Url Config",
-    "contactWithAdmin": "Contact with Admin"
+    "contactWithAdmin": "Contact with Admin",
+    "dashboard": "Dashboard"
 }

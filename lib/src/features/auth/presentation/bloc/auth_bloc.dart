@@ -1,3 +1,4 @@
+import 'package:auth/src/core/router/router.dart';
 import 'package:auth/src/features/auth/data/models/signin.dart';
 import 'package:auth/src/features/auth/domain/usecase/signin.dart';
 import 'package:auth/src/features/auth/domain/usecase/signout.dart';
@@ -34,6 +35,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(Loading());
       try {
         await _logoutUseCase.call();
+        goRouter.refresh();
         emit(Success(message: 'Successfully logged out'));
       } catch (e) {
         emit(Error(errorMessage: e.toString()));
