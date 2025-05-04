@@ -1,10 +1,10 @@
 import 'dart:async';
-
-import 'package:auth/src/injector.dart';
-import 'package:auth/src/core/shared/error/app_error_view.dart';
 import 'package:auth/src/core/configs/environment.dart';
 import 'package:auth/src/core/configs/get_platform.dart';
+import 'package:auth/src/core/network/api_client.dart';
+import 'package:auth/src/core/shared/error/app_error_view.dart';
 import 'package:auth/src/features/settings/data/repositories/settings_repository_impl.dart';
+import 'package:auth/src/injector.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -48,10 +48,14 @@ class Initializer {
       await HiveRepositoryImpl().init();
       log.i("Hive Repository initialized successfully.");
 
+      log.i("Initializing ApiClient...");
+      await sl<ApiClient>().init();
+      log.i("ApiClient Initialized...");
+
       log.i("Initializing Settings Repository...");
       await SettingsRepositoryImpl().init();
-
       log.i("Settings Repository initialized successfully.");
+
       if (sl<PT>().isWeb) setUrlStrategy(const PathUrlStrategy());
     } catch (err, stack) {
       log.e("Error during _initServices: $err");

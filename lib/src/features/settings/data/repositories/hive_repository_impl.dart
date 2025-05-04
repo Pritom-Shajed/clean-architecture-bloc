@@ -1,7 +1,8 @@
 import 'dart:io';
 
-import 'package:auth/src/injector.dart';
 import 'package:auth/src/core/configs/get_platform.dart';
+import 'package:auth/src/core/network/model/auth_store.dart';
+import 'package:auth/src/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:path/path.dart';
@@ -56,30 +57,35 @@ class HiveRepositoryImpl implements HiveRepository {
   }
 
   void _registerHiveAdepters() {
+    Hive.registerAdapter(AuthStoreAdapter());
     Hive.registerAdapter(LocaleProfileAdapter());
     Hive.registerAdapter(ThemeProfileAdapter());
     Hive.registerAdapter(AppSettingsAdapter());
   }
 
   Future<void> _openAllBoxes() async {
+    await Hive.openBox<AuthStore>(BoxNames.authStores);
     await Hive.openBox<LocaleProfile>(BoxNames.localeProfile);
     await Hive.openBox<ThemeProfile>(BoxNames.themeProfile);
     await Hive.openBox<AppSettings>(BoxNames.appSettings);
   }
 
   Future<void> _closeAllBoxes() async {
+    await Boxes.authStores.close();
     await Boxes.localeProfile.close();
     await Boxes.themeProfile.close();
     await Boxes.appSettings.close();
   }
 
   Future<void> _clearAllBoxes() async {
+    await Boxes.authStores.clear();
     await Boxes.localeProfile.clear();
     await Boxes.themeProfile.clear();
     await Boxes.appSettings.clear();
   }
 
   Future<void> _deleteAllBoxes() async {
+    await Hive.deleteBoxFromDisk(BoxNames.authStores);
     await Hive.deleteBoxFromDisk(BoxNames.localeProfile);
     await Hive.deleteBoxFromDisk(BoxNames.themeProfile);
     await Hive.deleteBoxFromDisk(BoxNames.appSettings);

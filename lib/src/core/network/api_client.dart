@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:auth/src/injector.dart';
 import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/configs/environment.dart';
 import 'package:auth/src/core/network/enum/method.dart';
@@ -11,6 +10,7 @@ import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:auth/src/core/utils/logger/logger_helper.dart';
 import 'package:auth/src/features/settings/data/models/settings_model.dart';
 import 'package:auth/src/features/settings/data/repositories/hive_box.dart';
+import 'package:auth/src/injector.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,7 +37,7 @@ class ApiClient {
         .listen((_) => authStore = Boxes.authStores.get(appName.toCamelWord));
   }
 
-  bool get isLoggedIn => authStore != null && authStore!.isAccessTokenValid;
+  bool get isLoggedIn => authStore != null && authStore!.accessToken.isNotEmpty;
 
   // Future<void> signup({required Map<String, dynamic> data}) async {
   //   final response = await request(
@@ -87,23 +87,23 @@ class ApiClient {
 
   Future<String?> get _token async {
     if (authStore == null) return null;
-    if (authStore!.isAccessTokenValid) return authStore!.accessToken;
+    // if (authStore!.isAccessTokenValid) return authStore!.accessToken;
     return await _refreshToken();
   }
 
   Future<String?> _refreshToken() async {
     if (authStore == null) return null;
     log.f('Refresh token: ${authStore!.refreshToken}');
-    if (!authStore!.isRefreshTokenValid) {
-      log.i('Both token expired.');
-      await signout();
-      goRouter.refresh();
-      EasyLoading.showToast(
-        'Session expired. Please sign in again.',
-        toastPosition: EasyLoadingToastPosition.bottom,
-      );
-      return null;
-    }
+    // if (!authStore!.isRefreshTokenValid) {
+    //   log.i('Both token expired.');
+    //   await signout();
+    //   goRouter.refresh();
+    //   EasyLoading.showToast(
+    //     'Session expired. Please sign in again.',
+    //     toastPosition: EasyLoadingToastPosition.bottom,
+    //   );
+    //   return null;
+    // }
     log.i('Token refreshing...');
     final response = await request(
       ApiClientMethod.post,
@@ -137,15 +137,14 @@ class ApiClient {
       'Content-Type': 'application/json',
       if (isAuthRequired) 'Authorization': 'Bearer $token',
     };
-    final url = sl<AppSettings>().isProduction
-        ? Environment.prodBaseUrl
-        : Environment.devBaseUrl;
+    final url = sl<AppSettings>().isProduction ? Environment.prodBaseUrl : Environment.devBaseUrl;
     var request = http.Request(method.value, Uri.parse('$url/$endPoint'));
     if (data != null) request.body = json.encode(data);
     request.headers.addAll(headers);
 
     final response = await request.send();
     final body = await response.stream.bytesToString();
+
     log.i('Response of $endPoint by $method: $body');
     return body;
   }
@@ -162,11 +161,8 @@ class ApiClient {
       }
     }
     final headers = {'Authorization': 'Bearer $token'};
-    final url = sl<AppSettings>().isProduction
-        ? Environment.prodBaseUrl
-        : Environment.devBaseUrl;
-    final request = http.MultipartRequest(
-        ApiClientMethod.post.value, Uri.parse('$url/file'));
+    final url = sl<AppSettings>().isProduction ? Environment.prodBaseUrl : Environment.devBaseUrl;
+    final request = http.MultipartRequest(ApiClientMethod.post.value, Uri.parse('$url/file'));
     for (final path in paths) {
       request.files.add(await http.MultipartFile.fromPath('files', path));
     }

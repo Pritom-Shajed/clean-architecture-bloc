@@ -7,7 +7,6 @@ extension ApiResponseExt on ApiResponse {
     String? message,
     int? page,
     int? limit,
-    String? filter,
     dynamic data,
   }) {
     return ApiResponse()
@@ -16,7 +15,6 @@ extension ApiResponseExt on ApiResponse {
       ..message = message ?? this.message
       ..page = page ?? this.page
       ..limit = limit ?? this.limit
-      ..filter = filter ?? this.filter
       ..data = data ?? this.data;
   }
 
@@ -28,7 +26,6 @@ extension ApiResponseExt on ApiResponse {
         _Json.message: message,
         _Json.page: page,
         _Json.limit: limit,
-        _Json.filter: filter,
         _Json.data: data,
       };
 }

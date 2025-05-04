@@ -1,13 +1,14 @@
+import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/shared/animations_widget/animated_popup.dart';
 import 'package:auth/src/core/shared/animations_widget/animated_widget_shower.dart';
 import 'package:auth/src/core/shared/list_tile/k_list_tile/k_list_tile.dart';
-import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:auth/src/features/settings/presentation/bloc/locale/locale_bloc.dart';
+import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../data/models/locale/locale_model.dart';
 
@@ -30,7 +31,7 @@ class LocaleTile extends StatelessWidget {
         style: const TextStyle(fontWeight: FontWeight.bold),
       ),
       trailing: OutlinedButton.icon(
-        style: OutlinedButton.styleFrom(minimumSize: const Size(50, 48)),
+        style: OutlinedButton.styleFrom(minimumSize: const Size(50, 48), backgroundColor: context.theme.highlightColor),
         onPressed: () async => await showDialog(
           context: context,
           barrierDismissible: false,
@@ -87,8 +88,7 @@ class LocaleChangerPopup extends StatelessWidget {
                       if (!context.mounted) return;
                       context.pop();
                     },
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 12.0, vertical: 10.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10.0),
                     leading: Radio<LocaleProfile?>(
                       value: LocaleProfile.values[index],
                       groupValue: state.locale,

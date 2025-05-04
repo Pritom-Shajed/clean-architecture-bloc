@@ -1,8 +1,10 @@
 import 'package:auth/src/core/shared/animations_widget/animated_popup.dart';
 import 'package:auth/src/core/shared/animations_widget/animated_widget_shower.dart';
 import 'package:auth/src/core/shared/list_tile/k_list_tile/k_list_tile.dart';
+import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/utils/extensions/extensions.dart';
@@ -53,12 +55,11 @@ class SignoutPopup extends StatelessWidget {
             onPressed: () => Navigator.of(context).pop(),
             child: Text(
               'Cancel',
-              style: TextStyle(
-                  color: context.theme.dividerColor.withValues(alpha: 0.8)),
+              style: TextStyle(color: context.theme.dividerColor.withValues(alpha: 0.8)),
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () => context.read<AuthBloc>().add(Logout()),
             child: const Text('Confirm', style: TextStyle(color: Colors.red)),
           ),
         ],

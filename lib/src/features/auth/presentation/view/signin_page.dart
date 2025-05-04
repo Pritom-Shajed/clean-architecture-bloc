@@ -16,9 +16,9 @@ class SigninPage extends StatefulWidget {
 }
 
 class _SigninPageState extends State<SigninPage> {
-  final TextEditingController _emailCon = TextEditingController();
+  final TextEditingController _emailCon = TextEditingController(text: 'john@mail.com');
 
-  final TextEditingController _passwordCon = TextEditingController();
+  final TextEditingController _passwordCon = TextEditingController(text: 'changeme');
 
   onDispose() {
     _emailCon.dispose();
@@ -46,10 +46,7 @@ class _SigninPageState extends State<SigninPage> {
             children: [
               const Text(
                 'Sign In',
-                style: TextStyle(
-                    color: Color(0xff2A4ECA),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 32),
+                style: TextStyle(color: Color(0xff2A4ECA), fontWeight: FontWeight.bold, fontSize: 32),
               ),
               const SizedBox(
                 height: 50,
@@ -67,9 +64,7 @@ class _SigninPageState extends State<SigninPage> {
                 isObscureText: !context.watch<AuthBloc>().passwordVisible,
                 suffixIcon: InkWell(
                   onTap: () => context.read<AuthBloc>().add(PassObscure()),
-                  child: Icon(context.watch<AuthBloc>().passwordVisible
-                      ? Icons.visibility
-                      : Icons.visibility_off),
+                  child: Icon(context.watch<AuthBloc>().passwordVisible ? Icons.visibility : Icons.visibility_off),
                 ),
               ),
               const SizedBox(
@@ -79,10 +74,8 @@ class _SigninPageState extends State<SigninPage> {
                   isLoading: context.watch<AuthBloc>().state is Loading,
                   title: 'Login',
                   onPressed: () {
-                    context.read<AuthBloc>().add(Login(
-                        params: SigninParams(
-                            email: _emailCon.text.trim(),
-                            password: _passwordCon.text.trim())));
+                    context.read<AuthBloc>().add(
+                        Login(params: SigninParams(email: _emailCon.text.trim(), password: _passwordCon.text.trim())));
                   }),
               const SizedBox(
                 height: 20,

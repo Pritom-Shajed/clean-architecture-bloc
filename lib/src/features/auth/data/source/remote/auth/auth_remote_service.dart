@@ -1,7 +1,7 @@
 import 'dart:convert';
+import 'dart:developer' as dev;
 import 'dart:io';
 
-import 'package:auth/src/injector.dart';
 import 'package:auth/src/core/network/api_client.dart';
 import 'package:auth/src/core/network/enum/method.dart';
 import 'package:auth/src/core/network/model/api_response.dart';
@@ -10,6 +10,7 @@ import 'package:auth/src/core/utils/logger/logger_helper.dart';
 import 'package:auth/src/features/auth/data/models/forgetpass.dart';
 import 'package:auth/src/features/auth/data/models/signin.dart';
 import 'package:auth/src/features/auth/data/models/signup.dart';
+import 'package:auth/src/injector.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AuthRemoteService {
@@ -34,12 +35,15 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
         isAuthRequired: false,
       );
       final Map<String, dynamic> apiResponse = json.decode(response);
+      log.i('API Response: $apiResponse');
       // final apiResponse = ApiResponse.fromRawJson(response);
       // if (!apiResponse.success) throw apiResponse.message;
       sl<ApiClient>().authStore = AuthStore(
         accessToken: apiResponse['access_token'],
         refreshToken: apiResponse['refresh_token'],
       );
+
+      // dev.log('AuthStore: ${sl<AuthStore>().isAccessTokenValid}');
       await _apiClient.authStore?.saveData();
       return Right(apiResponse);
     } on SocketException catch (e) {
