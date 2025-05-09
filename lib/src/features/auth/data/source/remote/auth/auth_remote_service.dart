@@ -1,13 +1,12 @@
 import 'dart:convert';
-import 'dart:developer' as dev;
 import 'dart:io';
 
 import 'package:auth/src/core/network/api_client.dart';
+import 'package:auth/src/core/network/endpoints/api_endpoints.dart';
 import 'package:auth/src/core/network/enum/method.dart';
 import 'package:auth/src/core/network/model/api_response.dart';
 import 'package:auth/src/core/network/model/auth_store.dart';
 import 'package:auth/src/core/utils/logger/logger_helper.dart';
-import 'package:auth/src/features/auth/data/models/forgetpass.dart';
 import 'package:auth/src/features/auth/data/models/signin.dart';
 import 'package:auth/src/features/auth/data/models/signup.dart';
 import 'package:auth/src/injector.dart';
@@ -16,7 +15,6 @@ import 'package:dartz/dartz.dart';
 abstract class AuthRemoteService {
   Future<Either> signin({required SigninParams params});
   Future<Either> signup({required SignupParams params});
-  Future<Either> forgetPassword({required ForgetPasswordParams params});
   Future<Either> signout();
 }
 
@@ -30,7 +28,7 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
     try {
       final response = await _apiClient.request(
         ApiClientMethod.post,
-        'auth/login',
+        ApiEndpoints.signIn,
         data: params.toJson(),
         isAuthRequired: false,
       );
@@ -58,7 +56,7 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
     try {
       final response = await _apiClient.request(
         ApiClientMethod.post,
-        'auth/signup',
+        ApiEndpoints.signUp,
         data: {
           'name': params.name,
           'email': params.email,
@@ -74,19 +72,6 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
       );
       await sl<ApiClient>().authStore?.saveData();
       return Right(apiResponse);
-    } on SocketException catch (e) {
-      return Left('No internet connection. $e');
-    } catch (e) {
-      return Left(e);
-    }
-  }
-
-  @override
-  Future<Either> forgetPassword({required ForgetPasswordParams params}) async {
-    try {
-      await Future.delayed(const Duration(seconds: 2));
-      log.i('Password reset email sent');
-      return const Right('Password reset email sent');
     } on SocketException catch (e) {
       return Left('No internet connection. $e');
     } catch (e) {
