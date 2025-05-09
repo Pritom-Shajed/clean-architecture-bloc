@@ -5,7 +5,11 @@ import 'package:auth/src/features/auth/data/source/remote/auth/auth_remote_servi
 import 'package:auth/src/features/auth/domain/repository/auth.dart';
 import 'package:auth/src/features/auth/domain/usecase/signin.dart';
 import 'package:auth/src/features/auth/domain/usecase/signout.dart';
-import 'package:auth/src/features/home/bloc/home_bloc.dart';
+import 'package:auth/src/features/home/data/repository/home_repository.dart';
+import 'package:auth/src/features/home/data/source/local/home_local_service.dart';
+import 'package:auth/src/features/home/data/source/remote/home_remote_service.dart';
+import 'package:auth/src/features/home/domain/repository/home_repository.dart';
+import 'package:auth/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:auth/src/features/settings/data/models/settings_model.dart';
 import 'package:auth/src/features/settings/data/repositories/hive_repository_impl.dart';
 import 'package:auth/src/features/settings/presentation/bloc/locale/locale_bloc.dart';
@@ -30,9 +34,12 @@ Future<void> initialize() async {
 
   // Services
   sl.registerSingleton<AuthRemoteService>(AuthRemoteServiceImpl(sl()));
+  sl.registerSingleton<HomeLocalService>(HomeLocalServiceImpl());
+  sl.registerSingleton<HomeRmoteService>(HomeRmoteServiceImpl(sl()));
 
   // Repositories
   sl.registerSingleton<AuthRepository>(AuthRepositoryImpl(sl()));
+  sl.registerSingleton<HomeRepository>(HomeRepositoryImpl());
 
   // Usecases
   sl.registerSingleton<SignoutUseCase>(SignoutUseCase(sl()));
@@ -41,8 +48,7 @@ Future<void> initialize() async {
   // Blocs
   sl.registerFactory<AuthBloc>(() => AuthBloc(sl(), sl()));
   sl.registerFactory<LocaleBloc>(() => LocaleBloc(sl()));
-  sl.registerFactory<PerformanceOverlayBloc>(
-      () => PerformanceOverlayBloc(sl()));
+  sl.registerFactory<PerformanceOverlayBloc>(() => PerformanceOverlayBloc(sl()));
   sl.registerFactory<ThemeBloc>(() => ThemeBloc(sl()));
   sl.registerFactory<UrlConfigBloc>(() => UrlConfigBloc(sl()));
   sl.registerFactory<SettingsBloc>(() => SettingsBloc(sl()));

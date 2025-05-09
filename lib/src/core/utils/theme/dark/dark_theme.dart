@@ -1,5 +1,5 @@
 import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/core/utils/theme/theme.dart';
+import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_transitions/go_transitions.dart';
@@ -12,18 +12,18 @@ const darkUiConfig = SystemUiOverlayStyle(
   systemNavigationBarIconBrightness: Brightness.light,
 );
 
-const darkPrimaryColor = kPrimaryColor;
+const darkPrimaryColor = AppColors.primaryColor;
 const _headLineTextColor = Colors.white;
-const _iconColorSecondary = kPrimaryColor;
+const _iconColorSecondary = AppColors.primaryColor;
 const _backgroundColor = Color(0xFF181A20);
 const _bodyTextColor = Colors.white;
 const _unselectedColor = Colors.blueGrey;
 const _titleTextColor = Colors.white;
-const _primaryLightColor = kPrimaryColor;
+const _primaryLightColor = AppColors.primaryColor;
 const _cardBackgroundColor = Color.fromARGB(255, 0, 0, 0);
 const _scaffoldBackgroundColor = Color(0xFF181A20);
-const _floatingActionButtonColor = kPrimaryColor;
-final _shadowColor = kPrimaryColor.withValues(alpha: 0.3);
+const _floatingActionButtonColor = AppColors.primaryColor;
+final _shadowColor = AppColors.primaryColor.withValues(alpha: 0.3);
 
 const _pageTransitionTheme = PageTransitionsTheme(
   builders: {
@@ -48,7 +48,7 @@ final darkTheme = ThemeData(
     brightness: Brightness.dark,
     listTileTheme: _listTileTheme,
     snackBarTheme: _snackBarTheme,
-    primaryColor: darkPrimaryColor,
+    primaryColor: AppColors.primaryColor,
     cardColor: _cardBackgroundColor,
     dividerTheme: _dividerTheme,
     unselectedWidgetColor: _unselectedColor,
@@ -65,13 +65,13 @@ final darkTheme = ThemeData(
     floatingActionButtonTheme: _floatingActionButtonTheme,
     iconTheme: const IconThemeData(color: _iconColorSecondary),
     chipTheme: _chipTheme,
-    primaryIconTheme: const IconThemeData(color: darkPrimaryColor),
+    primaryIconTheme: const IconThemeData(color: AppColors.primaryColor),
     pageTransitionsTheme: _pageTransitionTheme);
 
 final _chipTheme = ChipThemeData(
   backgroundColor: Colors.white,
   labelStyle: _textTheme.bodyMedium!.copyWith(
-    color: kPrimaryColor,
+    color: AppColors.primaryColor,
     fontWeight: FontWeight.w600,
   ),
   padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -79,7 +79,7 @@ final _chipTheme = ChipThemeData(
   side: BorderSide.none,
   labelPadding: const EdgeInsets.symmetric(horizontal: 5),
   elevation: 5.0,
-  shadowColor: kPrimaryColor.withValues(alpha: 0.5),
+  shadowColor: AppColors.primaryColor.withValues(alpha: 0.5),
 );
 
 final _dividerTheme = DividerThemeData(
@@ -88,8 +88,8 @@ final _dividerTheme = DividerThemeData(
 );
 
 final _switchTheme = SwitchThemeData(
-  thumbColor: WidgetStateProperty.all(darkPrimaryColor),
-  trackColor: WidgetStateProperty.all(darkPrimaryColor.withValues(alpha: 0.5)),
+  thumbColor: WidgetStateProperty.all(AppColors.primaryColor),
+  trackColor: WidgetStateProperty.all(AppColors.primaryColor.withValues(alpha: 0.5)),
 );
 
 final _darkInputDecorationTheme = InputDecorationTheme(
@@ -118,13 +118,13 @@ final _darkInputDecorationTheme = InputDecorationTheme(
   focusedBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    // borderSide: const BorderSide(color: darkPrimaryColor, width: 1.3),
+    // borderSide: const BorderSide(color: AppColors.primaryColor, width: 1.3),
     borderSide: BorderSide.none,
   ),
   floatingLabelStyle: const TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,
-    color: darkPrimaryColor,
+    color: AppColors.primaryColor,
   ),
   errorBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
@@ -140,16 +140,16 @@ final _darkInputDecorationTheme = InputDecorationTheme(
   ),
   filled: true,
   fillColor: _cardBackgroundColor,
-  suffixIconColor: darkPrimaryColor,
-  prefixIconColor: darkPrimaryColor,
+  suffixIconColor: AppColors.primaryColor,
+  prefixIconColor: AppColors.primaryColor,
   errorMaxLines: 3,
   floatingLabelBehavior: FloatingLabelBehavior.never,
 );
 
 const _textSelectionTheme = TextSelectionThemeData(
-  cursorColor: darkPrimaryColor,
-  selectionColor: darkPrimaryColor,
-  selectionHandleColor: darkPrimaryColor,
+  cursorColor: AppColors.primaryColor,
+  selectionColor: AppColors.primaryColor,
+  selectionHandleColor: AppColors.primaryColor,
 );
 
 final _snackBarTheme = SnackBarThemeData(
@@ -162,7 +162,7 @@ final _snackBarTheme = SnackBarThemeData(
 );
 
 final _tabBarTheme = TabBarTheme(
-  labelColor: darkPrimaryColor,
+  labelColor: AppColors.primaryColor,
   unselectedLabelColor: _unselectedColor,
   indicatorSize: TabBarIndicatorSize.label,
   indicator: BoxDecoration(borderRadius: borderRadius30),
@@ -176,7 +176,7 @@ final _cardTheme = CardTheme(
 );
 
 final _radioTheme = RadioThemeData(
-  fillColor: WidgetStateProperty.all(darkPrimaryColor),
+  fillColor: WidgetStateProperty.all(AppColors.primaryColor),
   overlayColor: WidgetStateProperty.all(_primaryLightColor),
 );
 
@@ -220,12 +220,12 @@ const _progressIndicatorTheme = ProgressIndicatorThemeData(
   refreshBackgroundColor: _primaryLightColor,
   circularTrackColor: _primaryLightColor,
   linearTrackColor: _primaryLightColor,
-  color: darkPrimaryColor,
+  color: AppColors.primaryColor,
 );
 
 final _elevatedButtonTheme = ElevatedButtonThemeData(
   style: ElevatedButton.styleFrom(
-    backgroundColor: darkPrimaryColor,
+    backgroundColor: AppColors.primaryColor,
     textStyle: _textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),
     foregroundColor: const Color(0xFFe2eeff),
     padding: const EdgeInsets.all(18),
@@ -236,7 +236,7 @@ final _elevatedButtonTheme = ElevatedButtonThemeData(
 final _outlinedButtonTheme = OutlinedButtonThemeData(
   style: OutlinedButton.styleFrom(
     side: BorderSide.none,
-    foregroundColor: darkPrimaryColor,
+    foregroundColor: AppColors.primaryColor,
     textStyle: _textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),
     backgroundColor: const Color(0xFFe2eeff),
     padding: const EdgeInsets.all(18),
@@ -267,25 +267,23 @@ const _textTheme = TextTheme(
   labelLarge: TextStyle(color: _bodyTextColor, fontWeight: FontWeight.w700),
   bodySmall: TextStyle(color: _bodyTextColor),
   bodyMedium: TextStyle(color: _bodyTextColor),
-  bodyLarge: TextStyle(
-      color: _bodyTextColor, fontSize: 16, fontWeight: FontWeight.w700),
-  headlineLarge:
-      TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
+  bodyLarge: TextStyle(color: _bodyTextColor, fontSize: 16, fontWeight: FontWeight.w700),
+  headlineLarge: TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
 );
 
 const _bottomNavBar = BottomNavigationBarThemeData(
   unselectedItemColor: _unselectedColor,
   type: BottomNavigationBarType.fixed,
-  selectedItemColor: darkPrimaryColor,
+  selectedItemColor: AppColors.primaryColor,
   showUnselectedLabels: true,
   elevation: 30,
   selectedIconTheme: IconThemeData(
-    color: darkPrimaryColor,
+    color: AppColors.primaryColor,
     size: 30,
   ),
   selectedLabelStyle: TextStyle(
     fontWeight: FontWeight.w700,
-    color: darkPrimaryColor,
+    color: AppColors.primaryColor,
     fontSize: 10,
   ),
   unselectedLabelStyle: TextStyle(

@@ -30,8 +30,9 @@ dependencies:
   flutter_svg: ^2.1.0
   url_launcher: ^6.3.1
   dio: ^5.8.0+1
- 
   freezed_annotation: ^3.0.0
+  form_builder_validators: ^11.1.2
+  fluttertoast: ^8.2.12
 
 dev_dependencies:
   flutter_test:
@@ -41,6 +42,8 @@ dev_dependencies:
   hive_ce_generator: ^1.8.2
   # dart pub run build_runner build --delete-conflicting-outputs
   flutter_lints: ^3.0.0
+  rename_app: ^1.6.2 #dart run rename_app:main all="App Name"
+  change_app_package_name: ^1.5.0 #dart run change_app_package_name:main com.new.package.name
 
 flutter:
 

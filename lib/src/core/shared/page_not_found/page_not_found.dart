@@ -1,13 +1,12 @@
 import 'dart:io';
 
-import 'package:auth/src/injector.dart';
 import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/configs/get_platform.dart';
+import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
-import 'package:auth/src/core/utils/theme/theme.dart';
+import 'package:auth/src/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart' show SvgPicture;
-
 
 class KPageNotFound extends StatelessWidget {
   const KPageNotFound({super.key, required this.error});
@@ -50,7 +49,7 @@ class KServerNotRunning extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(

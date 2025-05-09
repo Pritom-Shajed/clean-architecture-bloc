@@ -41,9 +41,7 @@ class ApiClient {
   }
 
   void _configureDio() {
-    final baseUrl = sl<AppSettings>().isProduction
-        ? Environment.prodBaseUrl
-        : Environment.devBaseUrl;
+    final baseUrl = sl<AppSettings>().isProduction ? Environment.prodBaseUrl : Environment.devBaseUrl;
 
     dio.options.baseUrl = baseUrl;
     dio.options.headers = {
@@ -137,8 +135,11 @@ class ApiClient {
       log.i('Response of $endPoint by $method: $responseData');
       return responseData;
     } on DioException catch (e) {
-      log.e('Request failed: ${e.response?.data ?? e.message}');
-      rethrow;
+      log.e('Request failed: ${e.response?.data['message'] ?? e.message}');
+      return Future.error(e.response?.data['message'] ?? e.message);
+    } catch (e) {
+      log.e('Request failed: $e');
+      return Future.error(e);
     }
   }
 
@@ -156,8 +157,7 @@ class ApiClient {
     }
 
     final headers = <String, String>{
-      if (isAuthRequired && authStore?.accessToken != null)
-        'Authorization': 'Bearer ${authStore!.accessToken}',
+      if (isAuthRequired && authStore?.accessToken != null) 'Authorization': 'Bearer ${authStore!.accessToken}',
     };
 
     try {
