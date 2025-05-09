@@ -3,7 +3,8 @@ import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-abstract class AppLoaders {
+class AppLoaders {
+  AppLoaders._();
   static Widget spinningLines({Key? key, double? size, Color? color}) {
     return SpinKitThreeBounce(key: key, color: color ?? AppColors.primaryColor, size: size ?? 25);
   }

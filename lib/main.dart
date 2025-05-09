@@ -1,6 +1,7 @@
 import 'package:auth/src/app.dart';
 import 'package:auth/src/core/initializer/initializer.dart';
 import 'package:auth/src/core/utils/colors/app_colors.dart';
+import 'package:auth/src/core/utils/loader/app_loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -27,10 +28,10 @@ void configEasyLoading(BuildContext context) {
     ..userInteractions = false
     ..maskType = EasyLoadingMaskType.custom
     ..maskColor = Colors.black.withValues(alpha: 0.8)
-    ..indicatorWidget = const SizedBox(
+    ..indicatorWidget = SizedBox(
       height: 70.0,
       width: 70.0,
-      child: SpinKitThreeBounce(color: AppColors.primaryColor, size: 30.0),
+      child: AppLoaders.spinningLines(),
     )
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle;
 }
