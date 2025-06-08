@@ -1,0 +1,18 @@
+# Generate jks file
+`keytool -genkey -v -keystore android/app/drink-o-clock.jks -keyalg RSA -keysize 2048 -validity 10000 -alias drink-clock -storepass @DrinkOClock1999 -keypass @SkyCRM123 -dname "CN=Omnibyte, OU=Tech, O=Omnibyte, L=Dhaka, S=Dhaka, C=BD"`
+
+# Generate keystore certificate fingerprint (debug mode)
+`keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android`
+`
+Certificate fingerprints:
+         SHA1: F7:47:16:E2:01:09:79:4C:6E:66:5C:74:F0:AC:4E:D2:96:24:04:93
+         SHA256: 68:BC:B1:DC:A4:56:5A:03:7F:7D:55:3A:DF:69:68:9D:BD:CB:2C:C9:61:34:B1:62:FB:1C:48:BB:AD:9C:AA:17
+`
+
+# Generate keystore certificate fingerprint (release mode)
+`keytool -list -v -keystore android/app/drink-o-clock.jks -alias drink-clock -storepass @DrinkOClock1999 -keypass @DrinkOClock1999`
+`
+Certificate fingerprints:
+         SHA1: F7:EA:0E:B9:C5:A8:27:2B:DB:D1:CB:C2:90:08:24:D3:6C:91:F6:DC
+         SHA256: 9C:8E:48:C7:27:B9:8A:15:92:7B:EF:CF:36:C0:10:F1:71:A3:D6:E9:09:EF:9A:77:43:B4:FE:1D:9C:0F:EE:5F
+`

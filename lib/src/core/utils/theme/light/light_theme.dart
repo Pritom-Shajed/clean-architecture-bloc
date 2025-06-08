@@ -58,7 +58,6 @@ final lightTheme = ThemeData(
   secondaryHeaderColor: _primaryLightColor,
   outlinedButtonTheme: _outlinedButtonTheme,
   elevatedButtonTheme: _elevatedButtonTheme,
-  indicatorColor: _floatingActionButtonColor,
   progressIndicatorTheme: _progressIndicatorTheme,
   inputDecorationTheme: _lightInputDecorationTheme,
   scaffoldBackgroundColor: _scaffoldBackgroundColor,
@@ -163,14 +162,14 @@ final _snackBarTheme = SnackBarThemeData(
   elevation: 0.0,
 );
 
-final _tabBarTheme = TabBarTheme(
+final _tabBarTheme = TabBarThemeData(
   labelColor: lightPrimaryColor,
   unselectedLabelColor: _unselectedColor,
   indicatorSize: TabBarIndicatorSize.label,
   indicator: BoxDecoration(borderRadius: borderRadius30),
 );
 
-final _cardTheme = CardTheme(
+final _cardTheme = CardThemeData(
   shape: roundedRectangleBorder12,
   shadowColor: _shadowColor,
   color: _cardBackgroundColor,
@@ -184,7 +183,7 @@ final _radioTheme = RadioThemeData(
 
 final _listTileTheme = ListTileThemeData(shape: roundedRectangleBorder30);
 
-final _dialogTheme = DialogTheme(shape: roundedRectangleBorder30);
+final _dialogTheme = DialogThemeData(shape: roundedRectangleBorder30);
 
 final _tooltipTheme = TooltipThemeData(
   padding: const EdgeInsets.fromLTRB(10, 5, 10, 5),
@@ -265,14 +264,10 @@ const _textTheme = TextTheme(
   labelLarge: TextStyle(color: _bodyTextColor, fontWeight: FontWeight.w700),
   bodySmall: TextStyle(color: _bodyTextColor),
   bodyMedium: TextStyle(color: _bodyTextColor),
-  bodyLarge: TextStyle(
-      color: _bodyTextColor, fontSize: 16, fontWeight: FontWeight.w700),
-  headlineLarge:
-      TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
-  headlineMedium:
-      TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
-  headlineSmall:
-      TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
+  bodyLarge: TextStyle(color: _bodyTextColor, fontSize: 16, fontWeight: FontWeight.w700),
+  headlineLarge: TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
+  headlineMedium: TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
+  headlineSmall: TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
 );
 
 const _bottomNavBar = BottomNavigationBarThemeData(

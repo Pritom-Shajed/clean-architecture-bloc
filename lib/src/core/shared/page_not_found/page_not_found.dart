@@ -59,7 +59,7 @@ class KServerNotRunning extends StatelessWidget {
               mainAxisAlignment: mainCenter,
               children: [
                 SvgPicture.asset(
-                  'assets/svgs/server-error.svg',
+                  'assets/svgs/error.svg',
                   height: context.width * 0.35,
                   width: context.width * 0.35,
                 ),
@@ -114,7 +114,7 @@ class KDataNotFound extends StatelessWidget {
             mainAxisAlignment: mainCenter,
             children: [
               SvgPicture.asset(
-                'assets/svgs/no-data.svg',
+                'assets/svgs/error.svg',
                 height: context.width * 0.15,
                 width: context.width * 0.15,
               ),
@@ -145,7 +145,7 @@ class AccesDeniedPage extends StatelessWidget {
             children: [
               Center(
                 child: SvgPicture.asset(
-                  'assets/svgs/access-denied.svg',
+                  'assets/svgs/error.svg',
                   height: context.width * 0.15,
                   width: context.width * 0.15,
                   colorFilter: context.theme.primaryColor.toColorFilter,

@@ -20,7 +20,7 @@ class MaintenanceBreak extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SvgPicture.asset(
-                'assets/svgs/maintenance.svg',
+                'assets/svgs/error.svg',
                 semanticsLabel: 'Maintenance Break',
                 width: size.height * 0.22,
                 placeholderBuilder: (_) => Container(

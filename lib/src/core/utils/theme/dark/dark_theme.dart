@@ -57,7 +57,6 @@ final darkTheme = ThemeData(
     textSelectionTheme: _textSelectionTheme,
     outlinedButtonTheme: _outlinedButtonTheme,
     elevatedButtonTheme: _elevatedButtonTheme,
-    indicatorColor: _floatingActionButtonColor,
     inputDecorationTheme: _darkInputDecorationTheme,
     progressIndicatorTheme: _progressIndicatorTheme,
     scaffoldBackgroundColor: _scaffoldBackgroundColor,
@@ -161,14 +160,14 @@ final _snackBarTheme = SnackBarThemeData(
   elevation: 0.0,
 );
 
-final _tabBarTheme = TabBarTheme(
+final _tabBarTheme = TabBarThemeData(
   labelColor: darkPrimaryColor,
   unselectedLabelColor: _unselectedColor,
   indicatorSize: TabBarIndicatorSize.label,
   indicator: BoxDecoration(borderRadius: borderRadius30),
 );
 
-final _cardTheme = CardTheme(
+final _cardTheme = CardThemeData(
   shape: roundedRectangleBorder12,
   shadowColor: _shadowColor,
   color: _cardBackgroundColor,
@@ -182,7 +181,7 @@ final _radioTheme = RadioThemeData(
 
 final _listTileTheme = ListTileThemeData(shape: roundedRectangleBorder30);
 
-final _dialogTheme = DialogTheme(
+final _dialogTheme = DialogThemeData(
   backgroundColor: _cardBackgroundColor,
   shape: roundedRectangleBorder30,
 );
@@ -267,10 +266,8 @@ const _textTheme = TextTheme(
   labelLarge: TextStyle(color: _bodyTextColor, fontWeight: FontWeight.w700),
   bodySmall: TextStyle(color: _bodyTextColor),
   bodyMedium: TextStyle(color: _bodyTextColor),
-  bodyLarge: TextStyle(
-      color: _bodyTextColor, fontSize: 16, fontWeight: FontWeight.w700),
-  headlineLarge:
-      TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
+  bodyLarge: TextStyle(color: _bodyTextColor, fontSize: 16, fontWeight: FontWeight.w700),
+  headlineLarge: TextStyle(fontWeight: FontWeight.w900, color: _headLineTextColor),
 );
 
 const _bottomNavBar = BottomNavigationBarThemeData(
