@@ -1,4 +1,4 @@
-package com.example.auth
+package com.bloc.template
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,6 +1,7 @@
 import 'package:auth/src/core/router/app_routes.dart';
 import 'package:auth/src/core/shared/button/basic_app_button.dart';
 import 'package:auth/src/core/shared/text_field/basic_text_field.dart';
+import 'package:auth/src/core/utils/toasts/app_toasts.dart';
 import 'package:auth/src/features/auth/data/models/signin.dart';
 import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,9 @@ class _SigninPageState extends State<SigninPage> {
 
   final TextEditingController _passwordCon = TextEditingController(text: 'changeme');
 
-  onDispose() {
+  @override
+  void dispose() {
+    super.dispose();
     _emailCon.dispose();
     _passwordCon.dispose();
   }
@@ -36,8 +39,9 @@ class _SigninPageState extends State<SigninPage> {
             context.go(AppRoutes.homeRoute);
           }
           if (state.status == AuthStatus.error) {
-            var snackBar = SnackBar(content: Text(state.errorMessage ?? 'An error occurred'));
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            AppToasts.longToast(
+              state.errorMessage ?? 'An error occurred',
+            );
           }
         },
         child: SafeArea(

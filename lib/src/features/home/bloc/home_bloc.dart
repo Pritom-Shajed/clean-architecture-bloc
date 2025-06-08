@@ -14,7 +14,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     _HomeStarted event,
     Emitter<HomeState> emit,
   ) {
-    // Handle the HomeStarted event
     emit(const HomeState.initial());
   }
 }

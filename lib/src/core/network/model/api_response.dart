@@ -5,7 +5,7 @@ part 'api_response.ext.dart';
 class ApiResponse {
   ApiResponse();
 
-  bool success = false;
+  bool success = true;
   int statusCode = 0;
   String message = '';
   int page = 1;

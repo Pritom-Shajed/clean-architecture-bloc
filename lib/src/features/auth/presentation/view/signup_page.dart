@@ -1,10 +1,12 @@
 import 'package:auth/src/core/shared/button/basic_app_button.dart';
+import 'package:auth/src/core/utils/toasts/app_toasts.dart';
 import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:auth/src/features/auth/presentation/view/signin_page.dart';
 import 'package:auth/src/features/home/presentation/home_page.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class SignupPage extends StatefulWidget {
   static const name = 'signup';
@@ -21,7 +23,9 @@ class _SignupPageState extends State<SignupPage> {
 
   final TextEditingController _passwordCon = TextEditingController();
 
-  onDispose() {
+  @override
+  void dispose() {
+    super.dispose();
     _usernameCon.dispose();
     _emailCon.dispose();
     _passwordCon.dispose();
@@ -33,15 +37,12 @@ class _SignupPageState extends State<SignupPage> {
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
           if (state.status == AuthStatus.success) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const HomePage(),
-                ));
+            context.go(HomePage.name);
           }
           if (state.status == AuthStatus.error) {
-            var snackBar = SnackBar(content: Text(state.errorMessage ?? 'An error occurred'));
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
+            AppToasts.longToast(
+              state.errorMessage ?? 'An error occurred',
+            );
           }
         },
         child: SafeArea(
@@ -124,11 +125,7 @@ class _SignupPageState extends State<SignupPage> {
             style: const TextStyle(color: Color(0xff3461FD), fontWeight: FontWeight.w500),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const SigninPage(),
-                    ));
+                context.push(SigninPage.name);
               })
       ]),
     );

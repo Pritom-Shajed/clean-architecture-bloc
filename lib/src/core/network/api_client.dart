@@ -1,8 +1,11 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/configs/environment.dart';
+import 'package:auth/src/core/network/endpoints/api_endpoints.dart';
 import 'package:auth/src/core/network/enum/method.dart';
+import 'package:auth/src/core/network/failure/failure.dart';
 import 'package:auth/src/core/network/model/api_response.dart';
 import 'package:auth/src/core/network/model/auth_store.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
@@ -10,15 +13,20 @@ import 'package:auth/src/core/utils/logger/logger_helper.dart';
 import 'package:auth/src/features/settings/data/models/settings_model.dart';
 import 'package:auth/src/features/settings/data/repositories/hive_box.dart';
 import 'package:auth/src/injector.dart';
-import 'package:http/http.dart' as http;
+import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 class ApiClient {
   AuthStore? authStore;
+  final Dio dio = Dio();
 
   Future<void> init() async {
+    _configureDio();
+
     authStore = Boxes.authStores.get(appName.toCamelWord);
     log.f('AuthStore: $authStore');
     log.f('AuthStore: ${authStore?.isAccessTokenValid}');
+
     if (authStore != null && !authStore!.isRefreshTokenValid) {
       await signout();
       log.e('Automatically signed out due to invalid refresh token.');
@@ -26,6 +34,7 @@ class ApiClient {
       log.i('Automatically refreshing access token.');
       await _refreshToken();
     }
+
     _listenForAuthStore();
   }
 
@@ -35,44 +44,25 @@ class ApiClient {
         .listen((_) => authStore = Boxes.authStores.get(appName.toCamelWord));
   }
 
+  void _configureDio() {
+    final baseUrl = sl<AppSettings>().isProduction ? Environment.prodBaseUrl : Environment.devBaseUrl;
+
+    dio.options.baseUrl = baseUrl;
+    dio.options.headers = {
+      HttpHeaders.contentTypeHeader: 'application/json',
+    };
+
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onError: (DioException e, handler) async {
+          log.e('Dio Error: ${e.message}');
+          return handler.next(e);
+        },
+      ),
+    );
+  }
+
   bool get isLoggedIn => authStore != null && authStore!.accessToken.isNotEmpty;
-
-  // Future<void> signup({required Map<String, dynamic> data}) async {
-  //   final response = await request(
-  //     ApiClientMethod.post,
-  //     'auth/signup',
-  //     data: data,
-  //     isAuthRequired: false,
-  //   );
-  //   final apiResponse = ApiResponse.fromRawJson(response);
-  //   if (!apiResponse.success) throw apiResponse.message;
-  //   authStore = AuthStore(
-  //     userId: apiResponse.data['id'],
-  //     accessToken: apiResponse.data['tokens']['access-token'],
-  //     refreshToken: apiResponse.data['tokens']['refresh-token'],
-  //   );
-  //   await authStore?.saveData();
-  // }
-
-  // Future<void> signin({required String email, required String password}) async {
-  //   final response = await request(
-  //     ApiClientMethod.post,
-  //     'auth/login',
-  //     data: {
-  //       'email': email,
-  //       'password': password,
-  //     },
-  //     isAuthRequired: false,
-  //   );
-  //   final apiResponse = ApiResponse.fromRawJson(response);
-  //   if (!apiResponse.success) throw apiResponse.message;
-  //   authStore = AuthStore(
-  //     userId: apiResponse.data['id'],
-  //     accessToken: apiResponse.data['tokens']['access-token'],
-  //     refreshToken: apiResponse.data['tokens']['refresh-token'],
-  //   );
-  //   await authStore?.saveData();
-  // }
 
   Future<void> signout() async {
     try {
@@ -85,32 +75,22 @@ class ApiClient {
 
   Future<String?> get _token async {
     if (authStore == null) return null;
-    // if (authStore!.isAccessTokenValid) return authStore!.accessToken;
     return await _refreshToken();
   }
 
   Future<String?> _refreshToken() async {
     if (authStore == null) return null;
     log.f('Refresh token: ${authStore!.refreshToken}');
-    // if (!authStore!.isRefreshTokenValid) {
-    //   log.i('Both token expired.');
-    //   await signout();
-    //   goRouter.refresh();
-    //   EasyLoading.showToast(
-    //     'Session expired. Please sign in again.',
-    //     toastPosition: EasyLoadingToastPosition.bottom,
-    //   );
-    //   return null;
-    // }
+
     log.i('Token refreshing...');
-    final response = await request(
-      ApiClientMethod.post,
-      'auth/refresh-token',
+    final response = await dio.post(
+      '/${ApiEndpoints.refreshToken}',
       data: {'refresh-token': authStore!.refreshToken},
-      isAuthRequired: false,
     );
-    final apiResponse = ApiResponse.fromRawJson(response);
+
+    final apiResponse = ApiResponse.fromRawJson(jsonEncode(response.data));
     if (!apiResponse.success) throw apiResponse.message;
+
     authStore!.accessToken = apiResponse.data['access-token'];
     authStore!.refreshToken = apiResponse.data['refresh-token'];
     log.i('New tokens: ${apiResponse.data}');
@@ -118,7 +98,7 @@ class ApiClient {
     return authStore!.accessToken;
   }
 
-  Future<String> request(
+  Future<Either<Failure, String>> request(
     ApiClientMethod method,
     String endPoint, {
     Map<String, dynamic>? data,
@@ -127,45 +107,89 @@ class ApiClient {
     String? token;
     if (isAuthRequired) {
       token = await _token;
-      if (token == null) {
-        throw 'Session expired. Please sign in again.';
-      }
+      if (token == null) throw 'Session expired. Please sign in again.';
     }
+
     final headers = {
       'Content-Type': 'application/json',
       if (isAuthRequired) 'Authorization': 'Bearer $token',
     };
-    final url = sl<AppSettings>().isProduction ? Environment.prodBaseUrl : Environment.devBaseUrl;
-    var request = http.Request(method.value, Uri.parse('$url/$endPoint'));
-    if (data != null) request.body = json.encode(data);
-    request.headers.addAll(headers);
 
-    final response = await request.send();
-    final body = await response.stream.bytesToString();
+    Response response;
 
-    log.i('Response of $endPoint by $method: $body');
-    return body;
+    try {
+      switch (method) {
+        case ApiClientMethod.get:
+          response = await dio.get('/$endPoint', options: Options(headers: headers));
+          break;
+        case ApiClientMethod.post:
+          response = await dio.post('/$endPoint', data: data, options: Options(headers: headers));
+          break;
+        case ApiClientMethod.put:
+          response = await dio.put('/$endPoint', data: data, options: Options(headers: headers));
+          break;
+        case ApiClientMethod.delete:
+          response = await dio.delete('/$endPoint', data: data, options: Options(headers: headers));
+          break;
+        case ApiClientMethod.patch:
+          response = await dio.patch('/$endPoint', data: data, options: Options(headers: headers));
+          break;
+      }
+
+      log.i('Response of $endPoint by $method: ${response.data}');
+      return Right(jsonEncode(response.data));
+    } on DioException catch (e) {
+      final message = e.response?.data['message'] ?? e.message;
+      log.e('Error From Dio Exception: $message');
+      return Left(Failure.server('Oops! Error Occured: $message'));
+    } on SocketException catch (e) {
+      log.e('Error From Socket Exception: $e');
+      return Left(Failure.network('No internet connection. ${e.message}'));
+    } catch (e) {
+      log.e('Error From Catch Block: $e');
+      return Left(Failure.server('Unexpected error: ${e.toString()}'));
+    }
   }
 
-  Future<http.StreamedResponse> storeFile(
+  Future<Either<Failure, Response>> storeFile(
     List<String> paths, {
     bool isAuthRequired = true,
   }) async {
     String? token;
     if (isAuthRequired) {
       token = await _token;
-      if (token == null) {
-        throw 'Session expired. Please sign in again.';
-      }
+      if (token == null) throw 'Session expired. Please sign in again.';
     }
-    final headers = {'Authorization': 'Bearer $token'};
-    final url = sl<AppSettings>().isProduction ? Environment.prodBaseUrl : Environment.devBaseUrl;
-    final request = http.MultipartRequest(ApiClientMethod.post.value, Uri.parse('$url/file'));
-    for (final path in paths) {
-      request.files.add(await http.MultipartFile.fromPath('files', path));
-    }
-    request.headers.addAll(headers);
 
-    return await request.send();
+    final formData = FormData();
+    for (final path in paths) {
+      formData.files.add(MapEntry(
+        'files',
+        await MultipartFile.fromFile(path, filename: path.split('/').last),
+      ));
+    }
+
+    final headers = {
+      if (isAuthRequired) 'Authorization': 'Bearer $token',
+    };
+
+    try {
+      final response = await dio.post(
+        '/file',
+        data: formData,
+        options: Options(headers: headers),
+      );
+      return Right(response);
+    } on DioException catch (e) {
+      log.e('Error From Dio Exception (File Upload): $e');
+      final message = e.response?.data['message'] ?? e.message;
+      return Left(Failure.server('API error: $message'));
+    } on SocketException catch (e) {
+      log.e('Error From Socket Exception (File Upload): $e');
+      return Left(Failure.network('No internet connection. ${e.message}'));
+    } catch (e) {
+      log.e('Error From Catch Block (File Upload): $e');
+      return Left(Failure.server('Unexpected error: ${e.toString()}'));
+    }
   }
 }

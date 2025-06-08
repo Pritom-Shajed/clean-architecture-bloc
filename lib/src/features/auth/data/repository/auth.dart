@@ -1,3 +1,5 @@
+import 'package:auth/src/core/network/failure/failure.dart';
+import 'package:auth/src/core/network/model/api_response.dart';
 import 'package:auth/src/features/auth/data/models/forgetpass.dart';
 import 'package:auth/src/features/auth/data/models/signin.dart';
 import 'package:auth/src/features/auth/data/models/signup.dart';
@@ -12,7 +14,7 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this._authRemoteService);
 
   @override
-  Future<Either> signin({required SigninParams params}) async {
+  Future<Either<Failure, Map<String, dynamic>>> signin({required SigninParams params}) async {
     final response = await _authRemoteService.signin(params: params);
     return response.fold(
       (error) => Left(error),
@@ -21,7 +23,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either> signup({required SignupParams params}) async {
+  Future<Either<Failure, ApiResponse>> signup({required SignupParams params}) async {
     final response = await _authRemoteService.signup(params: params);
     return response.fold(
       (error) => Left(error),
@@ -30,7 +32,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either> forgetPassword({required ForgetPasswordParams params}) async {
+  Future<Either<Failure, String>> forgetPassword({required ForgetPasswordParams params}) async {
     final response = await _authRemoteService.forgetPassword(params: params);
     return response.fold(
       (error) => Left(error),
@@ -39,7 +41,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either> signout() async {
+  Future<Either<Failure, String>> signout() async {
     final response = await _authRemoteService.signout();
     return response.fold(
       (error) => Left(error),
