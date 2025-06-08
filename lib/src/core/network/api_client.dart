@@ -5,13 +5,11 @@ import 'package:auth/src/core/configs/environment.dart';
 import 'package:auth/src/core/network/enum/method.dart';
 import 'package:auth/src/core/network/model/api_response.dart';
 import 'package:auth/src/core/network/model/auth_store.dart';
-import 'package:auth/src/core/router/router.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:auth/src/core/utils/logger/logger_helper.dart';
 import 'package:auth/src/features/settings/data/models/settings_model.dart';
 import 'package:auth/src/features/settings/data/repositories/hive_box.dart';
 import 'package:auth/src/injector.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:http/http.dart' as http;
 
 class ApiClient {

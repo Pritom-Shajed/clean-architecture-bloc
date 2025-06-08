@@ -1,21 +1,13 @@
 part of 'auth_bloc.dart';
 
-abstract class AuthState {}
-
-class Initial extends AuthState {}
-
-class Loading extends AuthState {}
-
-class Success extends AuthState {
-  final String message;
-
-  Success({required this.message});
+@freezed
+abstract class AuthState with _$AuthState {
+  const factory AuthState({
+    @Default(false) bool passwordVisible,
+    @Default(AuthStatus.initial) AuthStatus status,
+    String? message,
+    String? errorMessage,
+  }) = _AuthState;
 }
 
-class Error extends AuthState {
-  final String errorMessage;
-
-  Error({required this.errorMessage});
-}
-
-class PassVisibilityTrigger extends AuthState {}
+enum AuthStatus { initial, loading, success, error }

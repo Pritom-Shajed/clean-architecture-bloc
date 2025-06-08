@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class BasicAppButton extends StatelessWidget {
   final bool isLoading;
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
   final String title;
   final double? height;
   final double? width;
   const BasicAppButton(
-      {required this.onPressed,
+      { this.onPressed,
       this.isLoading = false,
       this.title = '',
       this.height,

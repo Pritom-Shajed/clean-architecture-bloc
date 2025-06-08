@@ -1,5 +1,5 @@
 import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/core/utils/theme/theme.dart';
+import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_transitions/go_transitions.dart';
@@ -12,18 +12,18 @@ const darkUiConfig = SystemUiOverlayStyle(
   systemNavigationBarIconBrightness: Brightness.light,
 );
 
-const darkPrimaryColor = kPrimaryColor;
+const darkPrimaryColor = AppColors.primaryColor;
 const _headLineTextColor = Colors.white;
-const _iconColorSecondary = kPrimaryColor;
+const _iconColorSecondary = AppColors.primaryColor;
 const _backgroundColor = Color(0xFF181A20);
 const _bodyTextColor = Colors.white;
 const _unselectedColor = Colors.blueGrey;
 const _titleTextColor = Colors.white;
-const _primaryLightColor = kPrimaryColor;
+const _primaryLightColor = AppColors.primaryColor;
 const _cardBackgroundColor = Color.fromARGB(255, 0, 0, 0);
 const _scaffoldBackgroundColor = Color(0xFF181A20);
-const _floatingActionButtonColor = kPrimaryColor;
-final _shadowColor = kPrimaryColor.withValues(alpha: 0.3);
+const _floatingActionButtonColor = AppColors.primaryColor;
+final _shadowColor = AppColors.primaryColor.withValues(alpha: 0.3);
 
 const _pageTransitionTheme = PageTransitionsTheme(
   builders: {
@@ -70,7 +70,7 @@ final darkTheme = ThemeData(
 final _chipTheme = ChipThemeData(
   backgroundColor: Colors.white,
   labelStyle: _textTheme.bodyMedium!.copyWith(
-    color: kPrimaryColor,
+    color: AppColors.primaryColor,
     fontWeight: FontWeight.w600,
   ),
   padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -78,7 +78,7 @@ final _chipTheme = ChipThemeData(
   side: BorderSide.none,
   labelPadding: const EdgeInsets.symmetric(horizontal: 5),
   elevation: 5.0,
-  shadowColor: kPrimaryColor.withValues(alpha: 0.5),
+  shadowColor: AppColors.primaryColor.withValues(alpha: 0.5),
 );
 
 final _dividerTheme = DividerThemeData(

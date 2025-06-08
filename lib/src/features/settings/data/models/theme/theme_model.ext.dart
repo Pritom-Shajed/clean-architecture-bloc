@@ -15,11 +15,11 @@ extension ThemeProfileExtension on ThemeProfile {
   String get icon {
     switch (this) {
       case ThemeProfile.system:
-        return 'assets/svgs/system.svg';
+        return SvgAssets.system;
       case ThemeProfile.light:
-        return 'assets/svgs/light.svg';
+        return SvgAssets.light;
       case ThemeProfile.dark:
-        return 'assets/svgs/dark.svg';
+        return SvgAssets.dark;
     }
   }
 

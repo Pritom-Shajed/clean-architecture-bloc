@@ -1,0 +1,7 @@
+part of 'home_bloc.dart';
+
+@freezed
+class HomeState with _$HomeState {
+  const factory HomeState.initial() = HomeInitial;
+  // Add more states as needed
+}

@@ -1,3 +1,4 @@
+import 'package:auth/src/core/shared/asset_helper/assets.dart';
 import 'package:hive_ce/hive.dart';
 
 import '../../repositories/hive_box.dart';

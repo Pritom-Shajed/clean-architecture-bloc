@@ -1,6 +1,6 @@
 import 'package:auth/src/app.dart';
 import 'package:auth/src/core/initializer/initializer.dart';
-import 'package:auth/src/core/utils/theme/theme.dart';
+import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -15,8 +15,8 @@ void configEasyLoading(BuildContext context) {
     ..loadingStyle = EasyLoadingStyle.custom
     ..backgroundColor = Colors.transparent
     ..boxShadow = const <BoxShadow>[]
-    ..indicatorColor = kPrimaryColor
-    ..progressColor = kPrimaryColor
+    ..indicatorColor = AppColors.primaryColor
+    ..progressColor = AppColors.primaryColor
     ..textColor = Colors.white
     ..textStyle = const TextStyle(
       fontSize: 16.0,
@@ -30,7 +30,7 @@ void configEasyLoading(BuildContext context) {
     ..indicatorWidget = const SizedBox(
       height: 70.0,
       width: 70.0,
-      child: SpinKitThreeBounce(color: kPrimaryColor, size: 30.0),
+      child: SpinKitThreeBounce(color: AppColors.primaryColor, size: 30.0),
     )
     ..indicatorType = EasyLoadingIndicatorType.fadingCircle;
 }

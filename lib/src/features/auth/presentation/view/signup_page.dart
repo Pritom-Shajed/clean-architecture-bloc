@@ -32,15 +32,15 @@ class _SignupPageState extends State<SignupPage> {
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is Loading) {
+          if (state.status == AuthStatus.success) {
             Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
                   builder: (context) => const HomePage(),
                 ));
           }
-          if (state is Error) {
-            var snackBar = SnackBar(content: Text(state.errorMessage));
+          if (state.status == AuthStatus.error) {
+            var snackBar = SnackBar(content: Text(state.errorMessage ?? 'An error occurred'));
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
@@ -83,8 +83,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget _signup() {
     return const Text(
       'Sign Up',
-      style: TextStyle(
-          color: Color(0xff2A4ECA), fontWeight: FontWeight.bold, fontSize: 32),
+      style: TextStyle(color: Color(0xff2A4ECA), fontWeight: FontWeight.bold, fontSize: 32),
     );
   }
 
@@ -119,13 +118,10 @@ class _SignupPageState extends State<SignupPage> {
     return Text.rich(
       TextSpan(children: [
         const TextSpan(
-            text: 'Do you have account?',
-            style: TextStyle(
-                color: Color(0xff3B4054), fontWeight: FontWeight.w500)),
+            text: 'Do you have account?', style: TextStyle(color: Color(0xff3B4054), fontWeight: FontWeight.w500)),
         TextSpan(
             text: ' Sign In',
-            style: const TextStyle(
-                color: Color(0xff3461FD), fontWeight: FontWeight.w500),
+            style: const TextStyle(color: Color(0xff3461FD), fontWeight: FontWeight.w500),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 Navigator.push(

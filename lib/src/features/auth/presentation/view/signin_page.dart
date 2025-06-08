@@ -27,14 +27,16 @@ class _SigninPageState extends State<SigninPage> {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = context.watch<AuthBloc>();
+
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is Success) {
+          if (state.status == AuthStatus.success) {
             context.go(AppRoutes.homeRoute);
           }
-          if (state is Error) {
-            var snackBar = SnackBar(content: Text(state.errorMessage));
+          if (state.status == AuthStatus.error) {
+            var snackBar = SnackBar(content: Text(state.errorMessage ?? 'An error occurred'));
             ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
@@ -61,21 +63,23 @@ class _SigninPageState extends State<SigninPage> {
               BasicTextField(
                 controller: _passwordCon,
                 hintText: 'Password',
-                isObscureText: !context.watch<AuthBloc>().passwordVisible,
+                isObscureText: !bloc.state.passwordVisible,
                 suffixIcon: InkWell(
-                  onTap: () => context.read<AuthBloc>().add(PassObscure()),
-                  child: Icon(context.watch<AuthBloc>().passwordVisible ? Icons.visibility : Icons.visibility_off),
+                  onTap: () => bloc.add(const AuthEvent.togglePassVisibility()),
+                  child: Icon(bloc.state.passwordVisible ? Icons.visibility : Icons.visibility_off),
                 ),
               ),
               const SizedBox(
                 height: 60,
               ),
               BasicAppButton(
-                  isLoading: context.watch<AuthBloc>().state is Loading,
+                  isLoading: bloc.state.status == AuthStatus.loading,
                   title: 'Login',
                   onPressed: () {
-                    context.read<AuthBloc>().add(
-                        Login(params: SigninParams(email: _emailCon.text.trim(), password: _passwordCon.text.trim())));
+                    bloc.add(
+                      AuthEvent.login(
+                          params: SigninParams(email: _emailCon.text.trim(), password: _passwordCon.text.trim())),
+                    );
                   }),
               const SizedBox(
                 height: 20,

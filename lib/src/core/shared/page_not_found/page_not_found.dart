@@ -1,13 +1,13 @@
 import 'dart:io';
 
-import 'package:auth/src/injector.dart';
 import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/configs/get_platform.dart';
+import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
+import 'package:auth/src/core/shared/asset_helper/assets.dart';
+import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
-import 'package:auth/src/core/utils/theme/theme.dart';
+import 'package:auth/src/injector.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart' show SvgPicture;
-
 
 class KPageNotFound extends StatelessWidget {
   const KPageNotFound({super.key, required this.error});
@@ -23,8 +23,8 @@ class KPageNotFound extends StatelessWidget {
             mainAxisSize: mainMin,
             mainAxisAlignment: mainCenter,
             children: [
-              SvgPicture.asset(
-                'assets/svgs/error.svg',
+              AssetHelper.createSvgAsset(
+                assetPath: SvgAssets.error,
                 height: context.width * 0.35,
                 width: context.width * 0.35,
               ),
@@ -50,7 +50,7 @@ class KServerNotRunning extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: white,
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
@@ -58,8 +58,8 @@ class KServerNotRunning extends StatelessWidget {
               mainAxisSize: mainMin,
               mainAxisAlignment: mainCenter,
               children: [
-                SvgPicture.asset(
-                  'assets/svgs/error.svg',
+                AssetHelper.createSvgAsset(
+                  assetPath: SvgAssets.error,
                   height: context.width * 0.35,
                   width: context.width * 0.35,
                 ),
@@ -113,8 +113,8 @@ class KDataNotFound extends StatelessWidget {
             mainAxisSize: mainMin,
             mainAxisAlignment: mainCenter,
             children: [
-              SvgPicture.asset(
-                'assets/svgs/error.svg',
+              AssetHelper.createSvgAsset(
+                assetPath: SvgAssets.error,
                 height: context.width * 0.15,
                 width: context.width * 0.15,
               ),
@@ -144,11 +144,10 @@ class AccesDeniedPage extends StatelessWidget {
             mainAxisAlignment: mainCenter,
             children: [
               Center(
-                child: SvgPicture.asset(
-                  'assets/svgs/error.svg',
+                child: AssetHelper.createSvgAsset(
+                  assetPath: SvgAssets.error,
                   height: context.width * 0.15,
                   width: context.width * 0.15,
-                  colorFilter: context.theme.primaryColor.toColorFilter,
                 ),
               ),
               const SizedBox(height: 20),

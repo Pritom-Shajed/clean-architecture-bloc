@@ -1,13 +1,10 @@
 part of 'auth_bloc.dart';
 
-sealed class AuthEvent {}
 
-class Login extends AuthEvent {
-  final SigninParams params;
-
-  Login({required this.params});
+@freezed
+class AuthEvent with _$AuthEvent {
+  const factory AuthEvent.login({required SigninParams params}) = _Login;
+  const factory AuthEvent.logout() = _Logout;
+  const factory AuthEvent.togglePassVisibility() = _PassObscure;
 }
 
-class Logout extends AuthEvent {}
-
-class PassObscure extends AuthEvent {}

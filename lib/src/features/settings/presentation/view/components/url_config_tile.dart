@@ -2,13 +2,15 @@ import 'dart:math';
 
 import 'package:auth/src/core/shared/animations_widget/animated_popup.dart';
 import 'package:auth/src/core/shared/animations_widget/animated_widget_shower.dart';
+import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
+import 'package:auth/src/core/shared/asset_helper/assets.dart';
 import 'package:auth/src/core/shared/list_tile/k_list_tile/k_list_tile.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:auth/src/features/settings/presentation/bloc/url_config/bloc/url_config_bloc.dart';
+import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+
 import '../../../../../core/utils/extensions/extensions.dart';
 
 class URLConfigTile extends StatelessWidget {
@@ -19,11 +21,7 @@ class URLConfigTile extends StatelessWidget {
     return KListTile(
       leading: AnimatedWidgetShower(
         size: 30.0,
-        child: SvgPicture.asset(
-          'assets/svgs/url-config.svg',
-          colorFilter: context.theme.primaryColor.toColorFilter,
-          semanticsLabel: 'Url Config',
-        ),
+        child: AssetHelper.createSvgAsset(assetPath: SvgAssets.urlConfig),
       ),
       title: Text(
         t.urlConfig,
@@ -59,8 +57,7 @@ class URLConfigPopup extends StatelessWidget {
                 children: [
                   ToggleButtons(
                     borderRadius: BorderRadius.circular(25.0),
-                    constraints:
-                        const BoxConstraints(minWidth: 100.0, minHeight: 36.0),
+                    constraints: const BoxConstraints(minWidth: 100.0, minHeight: 36.0),
                     isSelected: List.generate(
                       state.headers.length,
                       (i) => state.currUrlIndex == i,
@@ -78,8 +75,7 @@ class URLConfigPopup extends StatelessWidget {
                           style: TextStyle(
                             color: state.currUrlIndex == i
                                 ? context.theme.primaryColor
-                                : context.theme.dividerColor.withValues(
-                                    alpha: 0.8),
+                                : context.theme.dividerColor.withValues(alpha: 0.8),
                           ),
                         ),
                       ),
@@ -102,8 +98,7 @@ class URLConfigPopup extends StatelessWidget {
                 onPressed: () => context.pop(),
                 child: Text(
                   'Cancel',
-                  style: TextStyle(
-                      color: context.theme.dividerColor.withValues(alpha: 0.8)),
+                  style: TextStyle(color: context.theme.dividerColor.withValues(alpha: 0.8)),
                 ),
               ),
               TextButton(

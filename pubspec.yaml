@@ -30,11 +30,17 @@ dependencies:
   flutter_svg: ^2.1.0
   http: ^1.4.0
   url_launcher: ^6.3.1
+  freezed_annotation: ^3.0.0
+  solar_icon_pack: ^0.2.1
+  fluttertoast: ^8.2.12
+  shimmer: ^3.0.0
+  lottie: ^3.3.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: ^2.4.14
+  freezed: ^3.0.6
   hive_ce_generator: ^1.8.2
   # dart pub run build_runner build --delete-conflicting-outputs
   flutter_lints: ^3.0.0
@@ -48,6 +54,7 @@ flutter:
     - .env
     - assets/fonts/
     - assets/svgs/
+    - assets/lottie/
 
   fonts:
     - family: NeueHaasDisplay

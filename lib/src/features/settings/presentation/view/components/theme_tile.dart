@@ -1,10 +1,13 @@
 import 'package:auth/src/core/shared/animations_widget/animated_widget_shower.dart';
+import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
+import 'package:auth/src/core/shared/asset_helper/assets.dart';
 import 'package:auth/src/core/shared/list_tile/k_list_tile/k_list_tile.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:auth/src/features/settings/presentation/bloc/theme/bloc/theme_bloc.dart';
+import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../../core/utils/extensions/extensions.dart';
 import '../../../data/models/theme/theme_model.dart';
 
@@ -18,11 +21,7 @@ class ThemeTile extends StatelessWidget {
         return KListTile(
           leading: AnimatedWidgetShower(
             size: 30.0,
-            child: SvgPicture.asset(
-              'assets/svgs/theme.svg',
-              colorFilter: context.theme.primaryColor.toColorFilter,
-              semanticsLabel: 'Theme',
-            ),
+            child: AssetHelper.createSvgAsset(assetPath: SvgAssets.theme),
           ),
           title: Text(
             t.theme,
@@ -36,9 +35,7 @@ class ThemeTile extends StatelessWidget {
               (i) => ThemeProfile.values[i] == state.theme,
             ),
             selectedColor: context.theme.primaryColor,
-            onPressed: (i) => context
-                .read<ThemeBloc>()
-                .add(ChangeTheme(ThemeProfile.values[i])),
+            onPressed: (i) => context.read<ThemeBloc>().add(ChangeTheme(ThemeProfile.values[i])),
             children: List.generate(
               ThemeProfile.values.length,
               (i) => Padding(

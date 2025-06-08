@@ -1,11 +1,12 @@
 import 'package:auth/src/core/shared/animations_widget/animated_popup.dart';
 import 'package:auth/src/core/shared/animations_widget/animated_widget_shower.dart';
+import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
+import 'package:auth/src/core/shared/asset_helper/assets.dart';
 import 'package:auth/src/core/shared/list_tile/k_list_tile/k_list_tile.dart';
 import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../../core/utils/extensions/extensions.dart';
 
@@ -19,11 +20,7 @@ class SignoutTile extends StatelessWidget {
         size: 30.0,
         child: Padding(
           padding: const EdgeInsets.all(4.0),
-          child: SvgPicture.asset(
-            'assets/svgs/signout.svg',
-            colorFilter: context.theme.primaryColor.toColorFilter,
-            semanticsLabel: 'Signout',
-          ),
+          child: AssetHelper.createSvgAsset(assetPath: SvgAssets.signout),
         ),
       ),
       title: Text(
@@ -59,7 +56,7 @@ class SignoutPopup extends StatelessWidget {
             ),
           ),
           TextButton(
-            onPressed: () => context.read<AuthBloc>().add(Logout()),
+            onPressed: () => context.read<AuthBloc>().add(const AuthEvent.logout()),
             child: const Text('Confirm', style: TextStyle(color: Colors.red)),
           ),
         ],

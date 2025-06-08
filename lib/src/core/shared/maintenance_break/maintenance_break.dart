@@ -1,7 +1,8 @@
 import 'package:auth/src/core/configs/constants.dart';
+import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
+import 'package:auth/src/core/shared/asset_helper/assets.dart';
 import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MaintenanceBreak extends StatelessWidget {
@@ -19,15 +20,7 @@ class MaintenanceBreak extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
-              SvgPicture.asset(
-                'assets/svgs/error.svg',
-                semanticsLabel: 'Maintenance Break',
-                width: size.height * 0.22,
-                placeholderBuilder: (_) => Container(
-                  padding: const EdgeInsets.all(30.0),
-                  child: const CircularProgressIndicator(),
-                ),
-              ),
+              AssetHelper.createSvgAsset(assetPath: SvgAssets.error, width: size.height * 0.22),
               const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
@@ -46,11 +39,9 @@ class MaintenanceBreak extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: InkWell(
-                  onTap: () async =>
-                      await launchUrl(Uri.parse('http://algoramming.com')),
+                  onTap: () async => await launchUrl(Uri.parse('http://algoramming.com')),
                   child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 3.0, horizontal: 20.0),
+                    padding: const EdgeInsets.symmetric(vertical: 3.0, horizontal: 20.0),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Theme.of(context).primaryColor,

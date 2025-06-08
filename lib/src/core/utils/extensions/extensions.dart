@@ -15,3 +15,4 @@ part 'src/double.dart';
 part 'src/file.dart';
 part 'src/iterable.dart';
 part 'src/string.dart';
+part 'src/sized_box.dart';
