@@ -1,5 +1,5 @@
 import 'package:auth/src/core/configs/get_platform.dart';
-import 'package:auth/src/core/network/api_client.dart';
+import 'package:auth/src/core/base/network/api_client.dart';
 import 'package:auth/src/core/router/app_routes.dart';
 import 'package:auth/src/core/shared/maintenance_break/maintenance_break.dart';
 import 'package:auth/src/core/shared/page_not_found/page_not_found.dart';

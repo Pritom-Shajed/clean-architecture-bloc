@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:auth/src/core/configs/constants.dart';
 import 'package:hive_ce/hive.dart';
 
-import '../../../features/settings/data/repositories/hive_box.dart';
-import '../../utils/extensions/extensions.dart';
+import '../../../../features/settings/data/repositories/hive_box.dart';
+import '../../../utils/extensions/extensions.dart';
 
 part 'auth_store.ext.dart';
 part 'auth_store.g.dart';

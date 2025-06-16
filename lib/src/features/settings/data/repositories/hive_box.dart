@@ -1,4 +1,4 @@
-import 'package:auth/src/core/network/model/auth_store.dart';
+import 'package:auth/src/core/base/network/model/auth_store.dart';
 import 'package:hive_ce/hive.dart';
 
 import '../models/locale/locale_model.dart';

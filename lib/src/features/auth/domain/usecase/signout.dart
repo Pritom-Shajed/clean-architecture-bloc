@@ -1,13 +1,14 @@
-import 'package:auth/src/core/network/failure/failure.dart';
+import 'package:auth/src/core/base/usecase/usecase.dart';
+import 'package:auth/src/core/configs/type_defs.dart';
 import 'package:auth/src/features/auth/domain/repository/auth.dart';
-import 'package:dartz/dartz.dart';
 
-class SignoutUseCase {
+class SignoutUseCase extends UseCaseWithoutParams<String> {
   final AuthRepository _authRepository;
 
   SignoutUseCase(this._authRepository);
 
-  Future<Either<Failure, String>> call() async {
+  @override
+  ResultFuture<String> call() async {
     return await _authRepository.signout();
   }
 }

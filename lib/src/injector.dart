@@ -1,11 +1,11 @@
 import 'package:auth/src/core/configs/get_platform.dart';
-import 'package:auth/src/core/network/api_client.dart';
+import 'package:auth/src/core/base/network/api_client.dart';
 import 'package:auth/src/features/auth/data/repository/auth.dart';
 import 'package:auth/src/features/auth/data/source/remote/auth/auth_remote_service.dart';
 import 'package:auth/src/features/auth/domain/repository/auth.dart';
 import 'package:auth/src/features/auth/domain/usecase/signin.dart';
 import 'package:auth/src/features/auth/domain/usecase/signout.dart';
-import 'package:auth/src/features/home/bloc/home_bloc.dart';
+import 'package:auth/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:auth/src/features/settings/data/models/settings_model.dart';
 import 'package:auth/src/features/settings/data/repositories/hive_repository_impl.dart';
 import 'package:auth/src/features/settings/presentation/bloc/locale/locale_bloc.dart';

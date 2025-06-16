@@ -22,7 +22,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   void _onLogin(_Login event, Emitter<AuthState> emit) async {
     emit(state.copyWith(status: AuthStatus.loading));
     try {
-      final result = await _signinUseCase.call(params: event.params);
+      final result = await _signinUseCase(event.params);
       result.fold(
         (error) {
           emit(state.copyWith(

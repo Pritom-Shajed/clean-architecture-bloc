@@ -3,11 +3,12 @@ import 'dart:io';
 
 import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/configs/environment.dart';
-import 'package:auth/src/core/network/endpoints/api_endpoints.dart';
-import 'package:auth/src/core/network/enum/method.dart';
-import 'package:auth/src/core/network/failure/failure.dart';
-import 'package:auth/src/core/network/model/api_response.dart';
-import 'package:auth/src/core/network/model/auth_store.dart';
+import 'package:auth/src/core/configs/type_defs.dart';
+import 'package:auth/src/core/base/network/endpoints/api_endpoints.dart';
+import 'package:auth/src/core/base/network/enum/method.dart';
+import 'package:auth/src/core/base/network/failure/failure.dart';
+import 'package:auth/src/core/base/network/model/api_response.dart';
+import 'package:auth/src/core/base/network/model/auth_store.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:auth/src/core/utils/logger/logger_helper.dart';
 import 'package:auth/src/features/settings/data/models/settings_model.dart';
@@ -98,7 +99,7 @@ class ApiClient {
     return authStore!.accessToken;
   }
 
-  Future<Either<Failure, String>> request(
+  ResultFuture<String> request(
     ApiClientMethod method,
     String endPoint, {
     Map<String, dynamic>? data,
@@ -151,7 +152,7 @@ class ApiClient {
     }
   }
 
-  Future<Either<Failure, Response>> storeFile(
+  ResultFuture<Response> storeFile(
     List<String> paths, {
     bool isAuthRequired = true,
   }) async {

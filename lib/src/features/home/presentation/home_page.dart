@@ -1,7 +1,7 @@
 import 'package:auth/src/core/router/router.dart';
 import 'package:auth/src/core/shared/button/basic_app_button.dart';
 import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:auth/src/features/home/bloc/home_bloc.dart';
+import 'package:auth/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:auth/src/features/settings/presentation/view/settings_view.dart';
 import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';

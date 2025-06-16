@@ -1,11 +1,12 @@
 import 'dart:convert';
 
-import 'package:auth/src/core/network/api_client.dart';
-import 'package:auth/src/core/network/endpoints/api_endpoints.dart';
-import 'package:auth/src/core/network/enum/method.dart';
-import 'package:auth/src/core/network/failure/failure.dart';
-import 'package:auth/src/core/network/model/api_response.dart';
-import 'package:auth/src/core/network/model/auth_store.dart';
+import 'package:auth/src/core/configs/type_defs.dart';
+import 'package:auth/src/core/base/network/api_client.dart';
+import 'package:auth/src/core/base/network/endpoints/api_endpoints.dart';
+import 'package:auth/src/core/base/network/enum/method.dart';
+import 'package:auth/src/core/base/network/failure/failure.dart';
+import 'package:auth/src/core/base/network/model/api_response.dart';
+import 'package:auth/src/core/base/network/model/auth_store.dart';
 import 'package:auth/src/core/utils/logger/logger_helper.dart';
 import 'package:auth/src/features/auth/data/models/forgetpass.dart';
 import 'package:auth/src/features/auth/data/models/signin.dart';
@@ -14,10 +15,10 @@ import 'package:auth/src/injector.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AuthRemoteService {
-  Future<Either<Failure, Map<String, dynamic>>> signin({required SigninParams params});
-  Future<Either<Failure, ApiResponse>> signup({required SignupParams params});
-  Future<Either<Failure, String>> forgetPassword({required ForgetPasswordParams params});
-  Future<Either<Failure, String>> signout();
+  ResultFuture<JSON> signin({required SigninParams params});
+  ResultFuture<ApiResponse> signup({required SignupParams params});
+  ResultFuture<String> forgetPassword({required ForgetPasswordParams params});
+  ResultFuture<String> signout();
 }
 
 class AuthRemoteServiceImpl implements AuthRemoteService {
@@ -26,7 +27,7 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
   AuthRemoteServiceImpl(this._apiClient);
 
   @override
-  Future<Either<Failure, Map<String, dynamic>>> signin({required SigninParams params}) async {
+  ResultFuture<JSON> signin({required SigninParams params}) async {
     final response = await _apiClient.request(
       ApiClientMethod.post,
       ApiEndpoints.signin,
@@ -61,7 +62,7 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
   }
 
   @override
-  Future<Either<Failure, ApiResponse>> signup({required SignupParams params}) async {
+  ResultFuture<ApiResponse> signup({required SignupParams params}) async {
     final response = await _apiClient.request(
       ApiClientMethod.post,
       ApiEndpoints.signup,
@@ -89,7 +90,7 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
   }
 
   @override
-  Future<Either<Failure, String>> forgetPassword({required ForgetPasswordParams params}) async {
+  ResultFuture<String> forgetPassword({required ForgetPasswordParams params}) async {
     try {
       await Future.delayed(const Duration(seconds: 2));
       log.i('Password reset email sent');
@@ -100,7 +101,7 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
   }
 
   @override
-  Future<Either<Failure, String>> signout() async {
+  ResultFuture<String> signout() async {
     try {
       await _apiClient.authStore?.deleteData();
       _apiClient.authStore = null;
