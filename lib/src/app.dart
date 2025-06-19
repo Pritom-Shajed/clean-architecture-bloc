@@ -1,4 +1,5 @@
 import 'package:auth/main.dart';
+import 'package:auth/src/core/base/network/connectivity_checker/bloc/connectivity_bloc.dart';
 import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/configs/size.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
     configEasyLoading(context);
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => sl<ConnectivityBloc>()),
         BlocProvider(create: (context) => sl<AuthBloc>()),
         BlocProvider(create: (context) => sl<LocaleBloc>()),
         BlocProvider(create: (context) => sl<PerformanceOverlayBloc>()),

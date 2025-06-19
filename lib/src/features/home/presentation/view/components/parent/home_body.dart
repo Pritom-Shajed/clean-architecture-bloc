@@ -13,20 +13,22 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(t.dashboard),
-            const SizedBox(
-              height: 16,
-            ),
-            BasicAppButton(
-                title: t.signout,
-                onPressed: () {
-                  context.read<AuthBloc>().add(const AuthEvent.logout());
-                })
-          ],
+        return SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(t.dashboard),
+              const SizedBox(
+                height: 16,
+              ),
+              BasicAppButton(
+                  title: t.signout,
+                  onPressed: () {
+                    context.read<AuthBloc>().add(const AuthEvent.logout());
+                  })
+            ],
+          ),
         );
       },
     );

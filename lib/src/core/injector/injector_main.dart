@@ -11,6 +11,9 @@ Future<void> initialize() async {
   // API Client
   sl.registerSingleton<ApiClient>(ApiClient());
 
+  // Connectivity
+  sl.registerFactory<ConnectivityBloc>(() => ConnectivityBloc());
+
   // Modules
   _authInit();
   _settingsInit();

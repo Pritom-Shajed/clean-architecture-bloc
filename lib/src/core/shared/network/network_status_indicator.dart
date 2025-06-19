@@ -3,7 +3,6 @@ import 'package:auth/src/core/base/network/enum/connectivity_status.dart';
 import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
 import 'package:auth/src/core/shared/asset_helper/assets.dart';
 import 'package:auth/src/core/utils/colors/app_colors.dart';
-import 'package:auth/src/core/utils/responsive/responsive_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -22,8 +21,8 @@ class NetworkStatusIndicator extends StatelessWidget {
       child: AssetHelper.createSvgAsset(
         assetPath: connectivityBloc.state.status == ConnectionStatus.connected ? SvgAssets.wifi : SvgAssets.wifiNo,
         color: AppColors.white,
-        width: ResponsiveUtil.scaleSize(context, 12),
-        height: ResponsiveUtil.scaleSize(context, 12),
+        width: 12,
+        height: 12,
       ),
     );
   }

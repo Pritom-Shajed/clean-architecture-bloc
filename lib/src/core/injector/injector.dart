@@ -1,4 +1,5 @@
 import 'package:auth/src/core/base/network/api_client.dart';
+import 'package:auth/src/core/base/network/connectivity_checker/bloc/connectivity_bloc.dart';
 import 'package:auth/src/core/configs/get_platform.dart';
 import 'package:auth/src/features/auth/data/repository/auth_repo_impl.dart';
 import 'package:auth/src/features/auth/data/sources/remote/auth_remote_service.dart';

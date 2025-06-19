@@ -23,7 +23,11 @@ class KAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: centerTitle,
       title: titleText != null ? Text(titleText!, style: context.text.titleMedium) : null,
       actions: [
-        if (showNetworkIndicator) const NetworkStatusIndicator(),
+        if (showNetworkIndicator)
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: const NetworkStatusIndicator(),
+          ),
         ...actions ?? const [],
       ],
     );
