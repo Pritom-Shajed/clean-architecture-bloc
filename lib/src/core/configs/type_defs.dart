@@ -1,5 +1,5 @@
-import 'package:auth/src/core/base/network/failure/failure.dart';
 import 'package:dartz/dartz.dart';
+import 'package:template/src/core/base/network/failure/failure.dart';
 
 typedef DataMap = Map<String, dynamic>;
 typedef ResultFuture<T> = Future<Either<Failure, T>>;

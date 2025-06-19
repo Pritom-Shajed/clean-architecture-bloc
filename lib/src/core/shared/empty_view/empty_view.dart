@@ -1,8 +1,8 @@
-import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
-import 'package:auth/src/core/shared/asset_helper/assets.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
+import 'package:template/src/core/shared/asset_helper/asset_helper.dart';
+import 'package:template/src/core/shared/asset_helper/assets.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
+import 'package:template/src/localization/app_locale.dart';
 
 class EmptyView extends StatelessWidget {
   const EmptyView({super.key});
@@ -12,9 +12,9 @@ class EmptyView extends StatelessWidget {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 20,
         children: [
           AssetHelper.createLottieJson(assetPath: LottieAssets.empty, width: 200, height: 200),
-          const SizedBox(height: 20),
           Text(t.noDataFound, style: context.text.bodySmall),
         ],
       ),

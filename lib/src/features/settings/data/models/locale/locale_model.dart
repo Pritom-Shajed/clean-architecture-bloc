@@ -1,6 +1,6 @@
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce/hive.dart';
+import 'package:template/src/localization/app_locale.dart';
 
 import '../../repositories/hive_box.dart';
 

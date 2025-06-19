@@ -1,11 +1,11 @@
-import 'package:auth/src/core/utils/colors/app_colors.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
-import 'package:auth/src/features/auth/presentation/view/signin_page.dart';
-import 'package:auth/src/features/auth/presentation/view/signup_page.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:template/src/core/utils/colors/app_colors.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
+import 'package:template/src/features/auth/presentation/view/signin_page.dart';
+import 'package:template/src/features/auth/presentation/view/signup_page.dart';
+import 'package:template/src/localization/app_locale.dart';
 
 class AuthFooter extends StatelessWidget {
   final bool isFromSignIn;

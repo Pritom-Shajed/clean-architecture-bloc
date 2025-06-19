@@ -1,11 +1,11 @@
-import 'package:auth/src/core/shared/page_wrapper/page_wrapper.dart';
-import 'package:auth/src/core/utils/toasts/app_toasts.dart';
-import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:auth/src/features/auth/presentation/view/components/parent/sign_up_body.dart';
-import 'package:auth/src/features/home/presentation/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:template/src/core/shared/page_wrapper/page_wrapper.dart';
+import 'package:template/src/core/utils/toasts/app_toasts.dart';
+import 'package:template/src/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:template/src/features/auth/presentation/view/components/parent/sign_up_body.dart';
+import 'package:template/src/features/home/presentation/view/home_page.dart';
 
 class SignupPage extends StatefulWidget {
   static const name = 'signup';

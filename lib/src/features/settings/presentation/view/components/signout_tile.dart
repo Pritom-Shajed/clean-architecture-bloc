@@ -1,14 +1,14 @@
-import 'package:auth/src/core/shared/animations_widget/animated_popup.dart';
-import 'package:auth/src/core/shared/animations_widget/animated_widget_shower.dart';
-import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
-import 'package:auth/src/core/shared/asset_helper/assets.dart';
-import 'package:auth/src/core/shared/list_tile/k_list_tile/k_list_tile.dart';
-import 'package:auth/src/core/utils/colors/app_colors.dart';
-import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:auth/src/features/home/presentation/bloc/home_bloc.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/src/core/shared/animations_widget/animated_popup.dart';
+import 'package:template/src/core/shared/animations_widget/animated_widget_shower.dart';
+import 'package:template/src/core/shared/asset_helper/asset_helper.dart';
+import 'package:template/src/core/shared/asset_helper/assets.dart';
+import 'package:template/src/core/shared/list_tile/k_list_tile/k_list_tile.dart';
+import 'package:template/src/core/utils/colors/app_colors.dart';
+import 'package:template/src/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:template/src/features/home/presentation/bloc/home_bloc.dart';
+import 'package:template/src/localization/app_locale.dart';
 
 import '../../../../../core/utils/extensions/extensions.dart';
 

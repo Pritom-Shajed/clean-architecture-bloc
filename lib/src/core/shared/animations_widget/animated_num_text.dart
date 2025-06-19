@@ -1,6 +1,6 @@
-import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:template/src/core/configs/constants.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
 
 class AnimatedNumText extends StatelessWidget {
   final double value;

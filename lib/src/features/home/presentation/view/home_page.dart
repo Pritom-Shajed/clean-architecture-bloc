@@ -1,9 +1,9 @@
-import 'package:auth/src/core/router/router.dart';
-import 'package:auth/src/core/shared/app_bar.dart/k_app_bar.dart';
-import 'package:auth/src/core/shared/page_wrapper/page_wrapper.dart';
-import 'package:auth/src/features/home/presentation/view/components/parent/home_body.dart';
-import 'package:auth/src/features/settings/presentation/view/settings_view.dart';
 import 'package:flutter/material.dart';
+import 'package:template/src/core/router/router.dart';
+import 'package:template/src/core/shared/app_bar.dart/k_app_bar.dart';
+import 'package:template/src/core/shared/page_wrapper/page_wrapper.dart';
+import 'package:template/src/features/home/presentation/view/components/parent/home_body.dart';
+import 'package:template/src/features/settings/presentation/view/settings_view.dart';
 
 class HomePage extends StatelessWidget {
   static const name = 'home';

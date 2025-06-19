@@ -1,8 +1,8 @@
-import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_transitions/go_transitions.dart';
+import 'package:template/src/core/configs/constants.dart';
+import 'package:template/src/core/utils/colors/app_colors.dart';
 
 const darkUiConfig = SystemUiOverlayStyle(
   statusBarColor: Colors.transparent,
@@ -159,7 +159,7 @@ final _tabBarTheme = TabBarThemeData(
   unselectedLabelColor: _unselectedColor,
   indicatorSize: TabBarIndicatorSize.label,
   indicator: BoxDecoration(borderRadius: borderRadius30),
- indicatorColor: _floatingActionButtonColor,
+  indicatorColor: _floatingActionButtonColor,
 );
 
 final _cardTheme = CardThemeData(

@@ -1,8 +1,8 @@
-import 'package:auth/src/core/configs/environment.dart';
-import 'package:auth/src/core/injector/injector.dart';
-import 'package:auth/src/features/settings/data/models/settings_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/src/core/configs/environment.dart';
+import 'package:template/src/core/injector/injector.dart';
+import 'package:template/src/features/settings/data/models/settings_model.dart';
 
 part 'url_config_event.dart';
 part 'url_config_state.dart';

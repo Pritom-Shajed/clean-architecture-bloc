@@ -1,6 +1,6 @@
-import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:template/src/core/utils/colors/app_colors.dart';
 
 class AppToasts {
   AppToasts._();

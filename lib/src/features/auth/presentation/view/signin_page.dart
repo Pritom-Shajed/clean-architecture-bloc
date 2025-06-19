@@ -1,12 +1,12 @@
-import 'package:auth/src/core/router/app_routes.dart';
-import 'package:auth/src/core/shared/page_wrapper/page_wrapper.dart';
-import 'package:auth/src/core/utils/toasts/app_toasts.dart';
-import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:auth/src/features/auth/presentation/view/components/parent/sign_in_body.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:template/src/core/router/app_routes.dart';
+import 'package:template/src/core/shared/page_wrapper/page_wrapper.dart';
+import 'package:template/src/core/utils/toasts/app_toasts.dart';
+import 'package:template/src/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:template/src/features/auth/presentation/view/components/parent/sign_in_body.dart';
+import 'package:template/src/localization/app_locale.dart';
 
 class SigninPage extends StatefulWidget {
   static const name = 'signin';

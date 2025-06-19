@@ -1,13 +1,13 @@
-import 'package:auth/src/core/shared/button/basic_app_button.dart';
-import 'package:auth/src/core/shared/text_field/basic_text_field.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
-import 'package:auth/src/features/auth/data/models/request/signin_params.dart';
-import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:auth/src/features/auth/presentation/view/components/child/auth_footer.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:template/src/core/shared/button/basic_app_button.dart';
+import 'package:template/src/core/shared/text_field/basic_text_field.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
+import 'package:template/src/features/auth/data/models/request/signin_params.dart';
+import 'package:template/src/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:template/src/features/auth/presentation/view/components/child/auth_footer.dart';
+import 'package:template/src/localization/app_locale.dart';
 
 class SigninBody extends StatelessWidget {
   const SigninBody({super.key, required this.emailController, required this.passController, this.formKey});

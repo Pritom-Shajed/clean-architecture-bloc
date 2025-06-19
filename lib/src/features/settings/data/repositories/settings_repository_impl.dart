@@ -1,5 +1,5 @@
-import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/core/injector/injector.dart';
+import 'package:template/src/core/configs/constants.dart';
+import 'package:template/src/core/injector/injector.dart';
 
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/logger/logger_helper.dart';

@@ -1,11 +1,10 @@
 import 'dart:convert' show json;
 
-import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/localization/app_locale.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_ce/hive.dart';
-import 'package:intl/intl.dart';
+import 'package:template/src/core/configs/constants.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
+
 import '../repositories/hive_box.dart';
 import 'locale/locale_model.dart';
 import 'theme/theme_model.dart';
@@ -42,18 +41,14 @@ class AppSettings extends HiveObject {
         'theme': theme.label,
       };
 
-  factory AppSettings.fromJson(String source) =>
-      AppSettings.fromRawJson(json.decode(source));
+  factory AppSettings.fromJson(String source) => AppSettings.fromRawJson(json.decode(source));
 
   factory AppSettings.fromRawJson(Map<String, dynamic> json) => AppSettings()
     ..firstRunDateTime = DateTime.parse(json['firstRunDateTime'] as String)
     ..performanceOverlayEnable = json['performanceOverlayEnable'] as bool
-    ..locale = LocaleProfile.values.firstWhere(
-        (e) => e.name == json['locale'] as String,
-        orElse: () => LocaleProfile.english)
-    ..theme = ThemeProfile.values.firstWhere(
-        (e) => e.name == json['theme'] as String,
-        orElse: () => ThemeProfile.light)
+    ..locale =
+        LocaleProfile.values.firstWhere((e) => e.name == json['locale'] as String, orElse: () => LocaleProfile.english)
+    ..theme = ThemeProfile.values.firstWhere((e) => e.name == json['theme'] as String, orElse: () => ThemeProfile.light)
     ..isProduction = json['isProduction'] as bool
     ..fontFamily = json['fontFamily'] as String
     ..firstRun = json['firstRun'] as bool;
@@ -67,8 +62,7 @@ class AppSettings extends HiveObject {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
     return other is AppSettings &&
-        other.firstRunDateTime.microsecondsSinceEpoch ==
-            firstRunDateTime.microsecondsSinceEpoch;
+        other.firstRunDateTime.microsecondsSinceEpoch == firstRunDateTime.microsecondsSinceEpoch;
   }
 
   @override

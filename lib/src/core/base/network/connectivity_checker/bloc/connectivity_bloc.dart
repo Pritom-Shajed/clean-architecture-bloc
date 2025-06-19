@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:auth/src/core/base/network/enum/connectivity_status.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:template/src/core/base/network/enum/connectivity_status.dart';
 
 part 'connectivity_bloc.freezed.dart';
 part 'connectivity_event.dart';
@@ -17,8 +17,8 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
   /// Initializes the [ConnectivityBloc].
   /// Sets up a subscription to connectivity changes and triggers an initial check.
   ConnectivityBloc({Connectivity? connectivity})
-    : _connectivity = connectivity ?? Connectivity(),
-      super(const ConnectivityState()) {
+      : _connectivity = connectivity ?? Connectivity(),
+        super(const ConnectivityState()) {
     on<_Started>(_onStarted);
     on<_Changed>(_onChanged);
 
@@ -44,8 +44,7 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
 
   /// Maps [ConnectivityResult]s to a [ConnectionStatus] and emits updated state.
   void _handleConnectivityResult(List<ConnectivityResult> result, Emitter<ConnectivityState> emit) {
-    final isConnected =
-        result.contains(ConnectivityResult.ethernet) ||
+    final isConnected = result.contains(ConnectivityResult.ethernet) ||
         result.contains(ConnectivityResult.wifi) ||
         result.contains(ConnectivityResult.mobile);
 

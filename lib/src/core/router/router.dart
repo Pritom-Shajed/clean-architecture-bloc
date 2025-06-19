@@ -1,16 +1,16 @@
-import 'package:auth/src/core/base/network/api_client.dart';
-import 'package:auth/src/core/configs/get_platform.dart';
-import 'package:auth/src/core/injector/injector.dart';
-import 'package:auth/src/core/router/app_routes.dart';
-import 'package:auth/src/core/shared/maintenance_break/maintenance_break.dart';
-import 'package:auth/src/core/shared/page_not_found/page_not_found.dart';
-import 'package:auth/src/core/utils/logger/logger_helper.dart';
-import 'package:auth/src/features/auth/presentation/view/signin_page.dart';
-import 'package:auth/src/features/auth/presentation/view/signup_page.dart';
-import 'package:auth/src/features/home/presentation/view/home_page.dart';
-import 'package:auth/src/features/settings/presentation/view/settings_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:template/src/core/base/network/api_client.dart';
+import 'package:template/src/core/configs/get_platform.dart';
+import 'package:template/src/core/injector/injector.dart';
+import 'package:template/src/core/router/app_routes.dart';
+import 'package:template/src/core/shared/maintenance_break/maintenance_break.dart';
+import 'package:template/src/core/shared/page_not_found/page_not_found.dart';
+import 'package:template/src/core/utils/logger/logger_helper.dart';
+import 'package:template/src/features/auth/presentation/view/signin_page.dart';
+import 'package:template/src/features/auth/presentation/view/signup_page.dart';
+import 'package:template/src/features/home/presentation/view/home_page.dart';
+import 'package:template/src/features/settings/presentation/view/settings_view.dart';
 
 Future<String?> authRedirect(BuildContext context, GoRouterState state) async {
   final path = '/${state.fullPath?.split('/').last.toLowerCase()}';

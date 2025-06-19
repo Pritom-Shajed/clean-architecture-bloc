@@ -1,17 +1,14 @@
-import 'package:auth/src/core/base/network/model/auth_store.dart';
 import 'package:hive_ce/hive.dart';
+import 'package:template/src/core/base/network/model/auth_store.dart';
 
 import '../models/locale/locale_model.dart';
 import '../models/settings_model.dart';
 import '../models/theme/theme_model.dart';
 
 class Boxes {
-  static Box<LocaleProfile> localeProfile =
-      Hive.box<LocaleProfile>(BoxNames.localeProfile);
-  static Box<ThemeProfile> themeProfile =
-      Hive.box<ThemeProfile>(BoxNames.themeProfile);
-  static Box<AppSettings> appSettings =
-      Hive.box<AppSettings>(BoxNames.appSettings);
+  static Box<LocaleProfile> localeProfile = Hive.box<LocaleProfile>(BoxNames.localeProfile);
+  static Box<ThemeProfile> themeProfile = Hive.box<ThemeProfile>(BoxNames.themeProfile);
+  static Box<AppSettings> appSettings = Hive.box<AppSettings>(BoxNames.appSettings);
   static Box<AuthStore> authStores = Hive.box<AuthStore>(BoxNames.authStores);
 }
 

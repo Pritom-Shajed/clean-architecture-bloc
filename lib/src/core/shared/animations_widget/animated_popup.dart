@@ -1,6 +1,5 @@
-import 'package:auth/src/core/configs/constants.dart';
 import 'package:flutter/material.dart';
-
+import 'package:template/src/core/configs/constants.dart';
 
 class AnimatedPopup extends StatefulWidget {
   const AnimatedPopup({super.key, required this.child});
@@ -11,8 +10,7 @@ class AnimatedPopup extends StatefulWidget {
   State<AnimatedPopup> createState() => _AnimatedPopupState();
 }
 
-class _AnimatedPopupState extends State<AnimatedPopup>
-    with SingleTickerProviderStateMixin {
+class _AnimatedPopupState extends State<AnimatedPopup> with SingleTickerProviderStateMixin {
   AnimationController? _animationSigninController;
   Animation<double>? _animationSignin;
 
@@ -23,8 +21,7 @@ class _AnimatedPopupState extends State<AnimatedPopup>
       vsync: this,
       duration: kAnimationDuration(0.3),
     );
-    _animationSignin = CurvedAnimation(
-        parent: _animationSigninController!, curve: Curves.easeInOut);
+    _animationSignin = CurvedAnimation(parent: _animationSigninController!, curve: Curves.easeInOut);
   }
 
   @override

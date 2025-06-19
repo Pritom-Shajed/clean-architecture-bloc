@@ -1,10 +1,10 @@
-import 'package:auth/src/core/base/network/connectivity_checker/bloc/connectivity_bloc.dart';
-import 'package:auth/src/core/base/network/enum/connectivity_status.dart';
-import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
-import 'package:auth/src/core/shared/asset_helper/assets.dart';
-import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/src/core/base/network/connectivity_checker/bloc/connectivity_bloc.dart';
+import 'package:template/src/core/base/network/enum/connectivity_status.dart';
+import 'package:template/src/core/shared/asset_helper/asset_helper.dart';
+import 'package:template/src/core/shared/asset_helper/assets.dart';
+import 'package:template/src/core/utils/colors/app_colors.dart';
 
 class NetworkStatusIndicator extends StatelessWidget {
   const NetworkStatusIndicator({super.key});

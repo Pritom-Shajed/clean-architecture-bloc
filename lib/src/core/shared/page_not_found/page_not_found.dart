@@ -1,14 +1,14 @@
 import 'dart:io';
 
-import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/core/configs/get_platform.dart';
-import 'package:auth/src/core/injector/injector.dart';
-import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
-import 'package:auth/src/core/shared/asset_helper/assets.dart';
-import 'package:auth/src/core/utils/colors/app_colors.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
+import 'package:template/src/core/configs/constants.dart';
+import 'package:template/src/core/configs/get_platform.dart';
+import 'package:template/src/core/injector/injector.dart';
+import 'package:template/src/core/shared/asset_helper/asset_helper.dart';
+import 'package:template/src/core/shared/asset_helper/assets.dart';
+import 'package:template/src/core/utils/colors/app_colors.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
+import 'package:template/src/localization/app_locale.dart';
 
 class KPageNotFound extends StatelessWidget {
   const KPageNotFound({super.key, required this.error});

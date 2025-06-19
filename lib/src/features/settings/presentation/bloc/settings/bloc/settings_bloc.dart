@@ -1,11 +1,11 @@
 import 'dart:async';
 
-import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
-import 'package:auth/src/core/utils/logger/logger_helper.dart';
-import 'package:auth/src/features/settings/data/models/settings_model.dart';
-import 'package:auth/src/features/settings/data/repositories/hive_box.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/src/core/configs/constants.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
+import 'package:template/src/core/utils/logger/logger_helper.dart';
+import 'package:template/src/features/settings/data/models/settings_model.dart';
+import 'package:template/src/features/settings/data/repositories/hive_box.dart';
 
 part 'settings_event.dart';
 part 'settings_state.dart';

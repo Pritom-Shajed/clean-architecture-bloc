@@ -1,4 +1,4 @@
-package com.bloc.template
+package com.pritom.template
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,4 +1,4 @@
-import 'package:auth/src/core/configs/type_defs.dart';
+import 'package:template/src/core/configs/type_defs.dart';
 
 abstract class UseCaseWithParams<Type, Params> {
   const UseCaseWithParams();

@@ -1,9 +1,9 @@
-import 'package:auth/src/core/shared/button/basic_app_button.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
-import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:solar_icon_pack/solar_linear_icons.dart';
+import 'package:template/src/core/shared/button/basic_app_button.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
+import 'package:template/src/localization/app_locale.dart';
 
 void confirmationDialog(
   BuildContext context, {

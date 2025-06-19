@@ -1,5 +1,5 @@
-import 'package:auth/src/core/injector/injector.dart';
 import 'package:flutter/material.dart' show Size, TextDirection, TextPainter, TextSpan, TextStyle;
+import 'package:template/src/core/injector/injector.dart';
 
 import 'get_platform.dart';
 

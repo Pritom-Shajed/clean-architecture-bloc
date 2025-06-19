@@ -1,9 +1,9 @@
-import 'package:auth/src/core/router/router.dart';
-import 'package:auth/src/features/auth/data/models/request/signin_params.dart';
-import 'package:auth/src/features/auth/domain/usecase/signin_usecase.dart';
-import 'package:auth/src/features/auth/domain/usecase/signout_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:template/src/core/router/router.dart';
+import 'package:template/src/features/auth/data/models/request/signin_params.dart';
+import 'package:template/src/features/auth/domain/usecase/signin_usecase.dart';
+import 'package:template/src/features/auth/domain/usecase/signout_usecase.dart';
 
 part 'auth_bloc.freezed.dart';
 part 'auth_event.dart';

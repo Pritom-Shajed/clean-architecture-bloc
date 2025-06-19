@@ -1,6 +1,6 @@
-import 'package:auth/src/core/utils/colors/app_colors.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:template/src/core/utils/colors/app_colors.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
 
 class BasicAppButton extends StatelessWidget {
   final bool isLoading;

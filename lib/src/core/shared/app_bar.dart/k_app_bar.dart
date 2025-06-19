@@ -1,6 +1,6 @@
-import 'package:auth/src/core/shared/network/network_status_indicator.dart';
-import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:template/src/core/shared/network/network_status_indicator.dart';
+import 'package:template/src/core/utils/extensions/extensions.dart';
 
 class KAppBar extends StatelessWidget implements PreferredSizeWidget {
   const KAppBar(

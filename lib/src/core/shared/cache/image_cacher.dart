@@ -1,7 +1,7 @@
-import 'package:auth/src/core/shared/asset_helper/assets.dart';
-import 'package:auth/src/core/utils/shimmer/app_shimmer.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:template/src/core/shared/asset_helper/assets.dart';
+import 'package:template/src/core/utils/shimmer/app_shimmer.dart';
 
 class ImageCacher extends StatelessWidget {
   final String? imageUrl;

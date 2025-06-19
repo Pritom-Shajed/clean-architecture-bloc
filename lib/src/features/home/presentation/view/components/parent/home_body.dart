@@ -1,8 +1,8 @@
-import 'package:auth/src/core/shared/button/basic_app_button.dart';
-import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:auth/src/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:template/src/core/shared/button/basic_app_button.dart';
+import 'package:template/src/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:template/src/features/home/presentation/bloc/home_bloc.dart';
 
 import '../../../../../../localization/app_locale.dart';
 
