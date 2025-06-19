@@ -5,7 +5,7 @@ lib/
 └── src/
     ├── core/                     # Core utilities, theme, config, etc.
     ├── features/
-    │   └── home/                 # Feature: Home/Product List
+    │   └── home/                 # Feature
     │       ├── data/             # Data layer (models, sources, repositories)
     │       │   ├── models/
     │       │   ├── repository/
