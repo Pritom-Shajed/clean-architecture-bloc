@@ -41,11 +41,17 @@ void _settingsInit() {
   sl.registerFactory<LocaleBloc>(() => LocaleBloc(sl()));
   sl.registerFactory<PerformanceOverlayBloc>(() => PerformanceOverlayBloc(sl()));
   sl.registerFactory<ThemeBloc>(() => ThemeBloc(sl()));
-  sl.registerFactory<UrlConfigBloc>(() => UrlConfigBloc(sl()));
   sl.registerFactory<SettingsBloc>(() => SettingsBloc(sl()));
 }
 
 void _homeInit() {
+  // Home Services
+  sl.registerSingleton<HomeRemoteService>(HomeRemoteServiceImpl(sl()));
+  sl.registerSingleton<HomeLocalService>(HomeLocalServiceImpl());
+
+  // Home Repository
+  sl.registerSingleton<HomeRepo>(HomeRepoImpl(sl(), sl()));
+
   // Bloc
   sl.registerFactory<HomeBloc>(() => HomeBloc());
 }

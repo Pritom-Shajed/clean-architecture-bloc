@@ -189,7 +189,7 @@ class _$ConnectivityStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _ConnectivityState implements ConnectivityState {
-  const _ConnectivityState({this.status = ConnectionStatus.disconnected});
+  const _ConnectivityState({this.status = ConnectionStatus.loading});
 
   @override
   @JsonKey()
