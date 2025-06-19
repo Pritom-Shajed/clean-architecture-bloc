@@ -5,24 +5,24 @@ import 'package:fluttertoast/fluttertoast.dart';
 class AppToasts {
   AppToasts._();
 
-  static void longToast(message, {ToastGravity? gravity, Color? color}) {
+  static void longToast(String message, {ToastGravity? gravity, Color? color}) {
     Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_LONG,
       gravity: gravity ?? ToastGravity.BOTTOM,
       backgroundColor: color ?? AppColors.toastBg,
-      textColor: Colors.white,
+      textColor: AppColors.white,
       fontSize: 12,
     );
   }
 
-  static void shortToast(message, {ToastGravity? gravity, Color? color}) {
+  static void shortToast(String message, {ToastGravity? gravity, Color? color}) {
     Fluttertoast.showToast(
       msg: message,
       toastLength: Toast.LENGTH_SHORT,
       gravity: gravity ?? ToastGravity.BOTTOM,
       backgroundColor: color ?? AppColors.toastBg,
-      textColor: Colors.white,
+      textColor: AppColors.white,
       fontSize: 12,
     );
   }

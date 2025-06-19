@@ -1,8 +1,8 @@
 import 'dart:io';
 
-import 'package:auth/src/core/configs/get_platform.dart';
 import 'package:auth/src/core/base/network/model/auth_store.dart';
-import 'package:auth/src/injector.dart';
+import 'package:auth/src/core/configs/get_platform.dart';
+import 'package:auth/src/core/injector/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:path/path.dart';

@@ -167,6 +167,7 @@ final _tabBarTheme = TabBarThemeData(
   unselectedLabelColor: _unselectedColor,
   indicatorSize: TabBarIndicatorSize.label,
   indicator: BoxDecoration(borderRadius: borderRadius30),
+  indicatorColor: _floatingActionButtonColor,
 );
 
 final _cardTheme = CardThemeData(

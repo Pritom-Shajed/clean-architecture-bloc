@@ -25,7 +25,7 @@ class URLConfigTile extends StatelessWidget {
       ),
       title: Text(
         t.urlConfig,
-        style: const TextStyle(fontWeight: FontWeight.bold),
+        style: context.text.titleSmall,
       ),
       onTap: () async => await showDialog(
         context: context,

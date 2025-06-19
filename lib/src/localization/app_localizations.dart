@@ -101,14 +101,140 @@ abstract class AppLocalizations {
   /// No description provided for @appName.
   ///
   /// In en, this message translates to:
-  /// **'bloc'**
+  /// **'template'**
   String get appName;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'Ok'**
+  String get ok;
+
+  /// No description provided for @settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Settings'**
+  String get settings;
+
+  /// No description provided for @loading.
+  ///
+  /// In en, this message translates to:
+  /// **'Loading'**
+  String get loading;
+
+  /// No description provided for @createAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create account'**
+  String get createAccount;
 
   /// No description provided for @signout.
   ///
   /// In en, this message translates to:
   /// **'Sign out'**
   String get signout;
+
+  /// No description provided for @signUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign up'**
+  String get signUp;
+
+  /// No description provided for @signIn.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign in'**
+  String get signIn;
+
+  /// No description provided for @pageNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Page Not Found'**
+  String get pageNotFound;
+
+  /// No description provided for @noDataFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No Data Found'**
+  String get noDataFound;
+
+  /// No description provided for @invalidPass.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email address'**
+  String get invalidPass;
+
+  /// No description provided for @invalidMail.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 6 characters long'**
+  String get invalidMail;
+
+  /// No description provided for @emptyField.
+  ///
+  /// In en, this message translates to:
+  /// **'This field cant be empty'**
+  String get emptyField;
+
+  /// No description provided for @areYourSure.
+  ///
+  /// In en, this message translates to:
+  /// **'Are you sure?'**
+  String get areYourSure;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @cancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get cancel;
+
+  /// No description provided for @exit.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit'**
+  String get exit;
+
+  /// No description provided for @dontHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Dont have an account'**
+  String get dontHaveAccount;
+
+  /// No description provided for @alreadyHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already have an account'**
+  String get alreadyHaveAccount;
+
+  /// No description provided for @underMaintenance.
+  ///
+  /// In en, this message translates to:
+  /// **'We are under maintenance'**
+  String get underMaintenance;
+
+  /// No description provided for @backSoon.
+  ///
+  /// In en, this message translates to:
+  /// **'We will be back soon'**
+  String get backSoon;
+
+  /// No description provided for @accessDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'You are not authorized to access this page! If you think this is a mistake, please contact your administrator'**
+  String get accessDenied;
+
+  /// No description provided for @errorOccured.
+  ///
+  /// In en, this message translates to:
+  /// **'An error occurred'**
+  String get errorOccured;
 
   /// No description provided for @language.
   ///

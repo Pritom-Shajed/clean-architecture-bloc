@@ -2,7 +2,6 @@ import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
-
 class KListTile extends StatelessWidget {
   const KListTile({
     super.key,
@@ -105,20 +104,17 @@ class _Tile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: selected == true
-            ? context.theme.primaryColor.withValues(alpha: 0.2)
-            : null,
+        color: selected == true ? context.theme.primaryColor.withValues(alpha: 0.2) : null,
         borderRadius: borderRadius15,
       ),
       child: Padding(
-        padding: padding ??
-            const EdgeInsets.symmetric(horizontal: 12.0, vertical: 3.0),
+        padding: padding ?? const EdgeInsets.symmetric(horizontal: 12.0, vertical: 3.0),
         child: Row(
           mainAxisAlignment: mainCenter,
           crossAxisAlignment: crossAxisAlignment,
           children: [
             leading ?? const SizedBox.shrink(),
-            SizedBox(width: paddingBetweenLeadingAndContent ?? 10),
+            (paddingBetweenLeadingAndContent ?? 10).sizedBox,
             Expanded(
               flex: 9,
               child: Column(
@@ -126,8 +122,7 @@ class _Tile extends StatelessWidget {
                 crossAxisAlignment: crossStart,
                 children: [
                   title ?? const SizedBox.shrink(),
-                  if (subtitle != null)
-                    SizedBox(height: paddingBetweenTitleAndSubtitle ?? 2.0),
+                  if (subtitle != null) (paddingBetweenTitleAndSubtitle ?? 2.0).sizedBox,
                   subtitle ?? const SizedBox.shrink(),
                 ],
               ),

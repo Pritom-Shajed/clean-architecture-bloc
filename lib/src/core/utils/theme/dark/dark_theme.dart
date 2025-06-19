@@ -99,25 +99,21 @@ final _darkInputDecorationTheme = InputDecorationTheme(
   enabledBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    // borderSide: const BorderSide(color: _bodyTextColor, width: 1.0),
     borderSide: BorderSide.none,
   ),
   border: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    // borderSide: const BorderSide(color: _bodyTextColor, width: 1.0),
     borderSide: BorderSide.none,
   ),
   disabledBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    // borderSide: BorderSide(color: _bodyTextColor.withValues(alpha: 0.4), width: 1.0),
     borderSide: BorderSide.none,
   ),
   focusedBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    // borderSide: const BorderSide(color: darkPrimaryColor, width: 1.3),
     borderSide: BorderSide.none,
   ),
   floatingLabelStyle: const TextStyle(
@@ -128,13 +124,11 @@ final _darkInputDecorationTheme = InputDecorationTheme(
   errorBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    // borderSide: const BorderSide(color: Colors.red, width: 1.3),
     borderSide: BorderSide.none,
   ),
   focusedErrorBorder: OutlineInputBorder(
     borderRadius: borderRadius12,
     gapPadding: 10,
-    // borderSide: const BorderSide(color: Colors.red, width: 1.3),
     borderSide: BorderSide.none,
   ),
   filled: true,
@@ -165,6 +159,7 @@ final _tabBarTheme = TabBarThemeData(
   unselectedLabelColor: _unselectedColor,
   indicatorSize: TabBarIndicatorSize.label,
   indicator: BoxDecoration(borderRadius: borderRadius30),
+ indicatorColor: _floatingActionButtonColor,
 );
 
 final _cardTheme = CardThemeData(

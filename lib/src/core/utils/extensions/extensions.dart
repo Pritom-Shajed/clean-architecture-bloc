@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:auth/src/injector.dart';
+import 'package:auth/src/core/injector/injector.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:path/path.dart';
@@ -14,5 +14,5 @@ part 'src/date.time.dart';
 part 'src/double.dart';
 part 'src/file.dart';
 part 'src/iterable.dart';
-part 'src/string.dart';
 part 'src/sized_box.dart';
+part 'src/string.dart';

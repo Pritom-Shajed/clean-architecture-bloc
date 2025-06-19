@@ -1,23 +1,21 @@
 import 'dart:convert';
 
-import 'package:auth/src/core/configs/type_defs.dart';
 import 'package:auth/src/core/base/network/api_client.dart';
 import 'package:auth/src/core/base/network/endpoints/api_endpoints.dart';
 import 'package:auth/src/core/base/network/enum/method.dart';
 import 'package:auth/src/core/base/network/failure/failure.dart';
 import 'package:auth/src/core/base/network/model/api_response.dart';
 import 'package:auth/src/core/base/network/model/auth_store.dart';
+import 'package:auth/src/core/configs/type_defs.dart';
+import 'package:auth/src/core/injector/injector.dart';
 import 'package:auth/src/core/utils/logger/logger_helper.dart';
-import 'package:auth/src/features/auth/data/models/forgetpass.dart';
-import 'package:auth/src/features/auth/data/models/signin.dart';
-import 'package:auth/src/features/auth/data/models/signup.dart';
-import 'package:auth/src/injector.dart';
+import 'package:auth/src/features/auth/data/models/request/signin_params.dart';
+import 'package:auth/src/features/auth/data/models/request/signup_params.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AuthRemoteService {
   ResultFuture<JSON> signin({required SigninParams params});
   ResultFuture<ApiResponse> signup({required SignupParams params});
-  ResultFuture<String> forgetPassword({required ForgetPasswordParams params});
   ResultFuture<String> signout();
 }
 
@@ -87,17 +85,6 @@ class AuthRemoteServiceImpl implements AuthRemoteService {
         return Right(apiResponse);
       },
     );
-  }
-
-  @override
-  ResultFuture<String> forgetPassword({required ForgetPasswordParams params}) async {
-    try {
-      await Future.delayed(const Duration(seconds: 2));
-      log.i('Password reset email sent');
-      return const Right('Password reset email sent');
-    } catch (e) {
-      return Left(Failure.local('Unexpected error: ${e.toString()}'));
-    }
   }
 
   @override

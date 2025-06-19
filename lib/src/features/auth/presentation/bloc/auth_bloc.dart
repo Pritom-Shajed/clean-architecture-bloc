@@ -1,7 +1,7 @@
 import 'package:auth/src/core/router/router.dart';
-import 'package:auth/src/features/auth/data/models/signin.dart';
-import 'package:auth/src/features/auth/domain/usecase/signin.dart';
-import 'package:auth/src/features/auth/domain/usecase/signout.dart';
+import 'package:auth/src/features/auth/data/models/request/signin_params.dart';
+import 'package:auth/src/features/auth/domain/usecase/signin_usecase.dart';
+import 'package:auth/src/features/auth/domain/usecase/signout_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -63,6 +63,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   }
 
   void _onPassObscure(_PassObscure event, Emitter<AuthState> emit) {
-    emit(state.copyWith(passwordVisible: !state.passwordVisible));
+    emit(state.copyWith(isPasswordVisible: !state.isPasswordVisible));
   }
 }

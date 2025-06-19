@@ -1,3 +1,5 @@
+import 'package:auth/src/core/utils/extensions/extensions.dart';
+import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 
 class AppErrorView extends StatelessWidget {
@@ -15,10 +17,10 @@ class AppErrorView extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(20),
           child: Text(
-            'Error: $message',
+            '${t.errorOccured}: $message',
             overflow: TextOverflow.visible,
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 14),
+            style: context.text.labelLarge,
           ),
         ),
       ),

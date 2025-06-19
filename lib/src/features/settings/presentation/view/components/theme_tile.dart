@@ -25,7 +25,7 @@ class ThemeTile extends StatelessWidget {
           ),
           title: Text(
             t.theme,
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: context.text.titleSmall,
           ),
           trailing: ToggleButtons(
             borderRadius: BorderRadius.circular(25.0),

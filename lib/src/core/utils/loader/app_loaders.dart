@@ -1,5 +1,6 @@
 import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
+import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
@@ -28,14 +29,35 @@ abstract class AppLoaders {
     return SpinKitCubeGrid(key: key, color: color ?? AppColors.primaryColor, size: size ?? 25);
   }
 
-  static Widget loaderWithText(BuildContext context, {String? text, Widget? loaderWidget}) {
+  static Widget loaderWithText(
+    BuildContext context, {
+    String? text,
+    LoaderDirection direction = LoaderDirection.vertical,
+    Widget? loaderWidget,
+  }) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        spacing: 14,
-        children: [loaderWidget ?? AppLoaders.cubeGrid(), Text(text ?? 'Loading...', style: context.text.bodySmall!)],
-      ),
+      child: direction == LoaderDirection.vertical
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              spacing: 14,
+              children: [
+                loaderWidget ?? AppLoaders.dancingSquare(),
+                Text(text ?? '${t.loading}...', style: context.text.bodySmall),
+              ],
+            )
+          : Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              spacing: 8,
+              children: [
+                loaderWidget ?? AppLoaders.spinningLines(size: 12),
+                Text(text ?? '${t.loading}...', style: context.text.bodySmall),
+              ],
+            ),
     );
   }
 }
+
+enum LoaderDirection { horizontal, vertical }

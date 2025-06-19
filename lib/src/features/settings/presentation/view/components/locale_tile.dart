@@ -25,7 +25,7 @@ class LocaleTile extends StatelessWidget {
       ),
       title: Text(
         t.language,
-        style: const TextStyle(fontWeight: FontWeight.bold),
+        style: context.text.titleSmall,
       ),
       trailing: OutlinedButton.icon(
         style: OutlinedButton.styleFrom(minimumSize: const Size(50, 48), backgroundColor: context.theme.highlightColor),

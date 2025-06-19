@@ -1,10 +1,11 @@
 import 'dart:async';
+
+import 'package:auth/src/core/base/network/api_client.dart';
 import 'package:auth/src/core/configs/environment.dart';
 import 'package:auth/src/core/configs/get_platform.dart';
-import 'package:auth/src/core/base/network/api_client.dart';
+import 'package:auth/src/core/injector/injector.dart';
 import 'package:auth/src/core/shared/error/app_error_view.dart';
 import 'package:auth/src/features/settings/data/repositories/settings_repository_impl.dart';
-import 'package:auth/src/injector.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';

@@ -1,6 +1,7 @@
 import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
 import 'package:auth/src/core/shared/asset_helper/assets.dart';
+import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -21,39 +22,38 @@ class MaintenanceBreak extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               AssetHelper.createSvgAsset(assetPath: SvgAssets.error, width: size.height * 0.22),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'We are under maintenance.',
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
+                  t.underMaintenance,
+                  style: context.text.labelLarge?.copyWith(
                     letterSpacing: 1.1,
                   ),
-                  textScaler: TextScaler.linear(1.4),
+                  textScaler: const TextScaler.linear(1.4),
                 ),
               ),
-              const Text(
-                'We will be back soon.',
-                textScaler: TextScaler.linear(1.1),
+              Text(
+                t.backSoon,
+                textScaler: const TextScaler.linear(1.1),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: InkWell(
-                  onTap: () async => await launchUrl(Uri.parse('http://algoramming.com')),
+                  onTap: () async => await launchUrl(Uri.parse('http://pritomshajed.com')),
                   child: Container(
                     padding: const EdgeInsets.symmetric(vertical: 3.0, horizontal: 20.0),
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: Theme.of(context).primaryColor,
+                        color: context.theme.primaryColor,
                         width: 2.0,
                       ),
                       borderRadius: BorderRadius.circular(35.0),
                     ),
                     child: Row(
                       mainAxisSize: mainMin,
+                      spacing: 10,
                       children: [
                         const Icon(Icons.engineering),
-                        const SizedBox(width: 10.0),
                         Text(
                           t.contactWithAdmin,
                           textScaler: const TextScaler.linear(0.8),

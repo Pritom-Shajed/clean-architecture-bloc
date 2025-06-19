@@ -1,19 +1,19 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:auth/src/core/configs/constants.dart';
-import 'package:auth/src/core/configs/environment.dart';
-import 'package:auth/src/core/configs/type_defs.dart';
 import 'package:auth/src/core/base/network/endpoints/api_endpoints.dart';
 import 'package:auth/src/core/base/network/enum/method.dart';
 import 'package:auth/src/core/base/network/failure/failure.dart';
 import 'package:auth/src/core/base/network/model/api_response.dart';
 import 'package:auth/src/core/base/network/model/auth_store.dart';
+import 'package:auth/src/core/configs/constants.dart';
+import 'package:auth/src/core/configs/environment.dart';
+import 'package:auth/src/core/configs/type_defs.dart';
+import 'package:auth/src/core/injector/injector.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:auth/src/core/utils/logger/logger_helper.dart';
 import 'package:auth/src/features/settings/data/models/settings_model.dart';
 import 'package:auth/src/features/settings/data/repositories/hive_box.dart';
-import 'package:auth/src/injector.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 

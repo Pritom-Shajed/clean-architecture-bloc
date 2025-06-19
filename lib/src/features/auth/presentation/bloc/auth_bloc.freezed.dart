@@ -138,7 +138,7 @@ class _PassObscure implements AuthEvent {
 
 /// @nodoc
 mixin _$AuthState {
-  bool get passwordVisible;
+  bool get isPasswordVisible;
   AuthStatus get status;
   String? get message;
   String? get errorMessage;
@@ -155,8 +155,8 @@ mixin _$AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is AuthState &&
-            (identical(other.passwordVisible, passwordVisible) ||
-                other.passwordVisible == passwordVisible) &&
+            (identical(other.isPasswordVisible, isPasswordVisible) ||
+                other.isPasswordVisible == isPasswordVisible) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -164,12 +164,12 @@ mixin _$AuthState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, passwordVisible, status, message, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, isPasswordVisible, status, message, errorMessage);
 
   @override
   String toString() {
-    return 'AuthState(passwordVisible: $passwordVisible, status: $status, message: $message, errorMessage: $errorMessage)';
+    return 'AuthState(isPasswordVisible: $isPasswordVisible, status: $status, message: $message, errorMessage: $errorMessage)';
   }
 }
 
@@ -179,7 +179,7 @@ abstract mixin class $AuthStateCopyWith<$Res> {
       _$AuthStateCopyWithImpl;
   @useResult
   $Res call(
-      {bool passwordVisible,
+      {bool isPasswordVisible,
       AuthStatus status,
       String? message,
       String? errorMessage});
@@ -197,15 +197,15 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? passwordVisible = null,
+    Object? isPasswordVisible = null,
     Object? status = null,
     Object? message = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_self.copyWith(
-      passwordVisible: null == passwordVisible
-          ? _self.passwordVisible
-          : passwordVisible // ignore: cast_nullable_to_non_nullable
+      isPasswordVisible: null == isPasswordVisible
+          ? _self.isPasswordVisible
+          : isPasswordVisible // ignore: cast_nullable_to_non_nullable
               as bool,
       status: null == status
           ? _self.status
@@ -227,14 +227,14 @@ class _$AuthStateCopyWithImpl<$Res> implements $AuthStateCopyWith<$Res> {
 
 class _AuthState implements AuthState {
   const _AuthState(
-      {this.passwordVisible = false,
+      {this.isPasswordVisible = false,
       this.status = AuthStatus.initial,
       this.message,
       this.errorMessage});
 
   @override
   @JsonKey()
-  final bool passwordVisible;
+  final bool isPasswordVisible;
   @override
   @JsonKey()
   final AuthStatus status;
@@ -256,8 +256,8 @@ class _AuthState implements AuthState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _AuthState &&
-            (identical(other.passwordVisible, passwordVisible) ||
-                other.passwordVisible == passwordVisible) &&
+            (identical(other.isPasswordVisible, isPasswordVisible) ||
+                other.isPasswordVisible == isPasswordVisible) &&
             (identical(other.status, status) || other.status == status) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.errorMessage, errorMessage) ||
@@ -265,12 +265,12 @@ class _AuthState implements AuthState {
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, passwordVisible, status, message, errorMessage);
+  int get hashCode => Object.hash(
+      runtimeType, isPasswordVisible, status, message, errorMessage);
 
   @override
   String toString() {
-    return 'AuthState(passwordVisible: $passwordVisible, status: $status, message: $message, errorMessage: $errorMessage)';
+    return 'AuthState(isPasswordVisible: $isPasswordVisible, status: $status, message: $message, errorMessage: $errorMessage)';
   }
 }
 
@@ -283,7 +283,7 @@ abstract mixin class _$AuthStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {bool passwordVisible,
+      {bool isPasswordVisible,
       AuthStatus status,
       String? message,
       String? errorMessage});
@@ -301,15 +301,15 @@ class __$AuthStateCopyWithImpl<$Res> implements _$AuthStateCopyWith<$Res> {
   @override
   @pragma('vm:prefer-inline')
   $Res call({
-    Object? passwordVisible = null,
+    Object? isPasswordVisible = null,
     Object? status = null,
     Object? message = freezed,
     Object? errorMessage = freezed,
   }) {
     return _then(_AuthState(
-      passwordVisible: null == passwordVisible
-          ? _self.passwordVisible
-          : passwordVisible // ignore: cast_nullable_to_non_nullable
+      isPasswordVisible: null == isPasswordVisible
+          ? _self.isPasswordVisible
+          : isPasswordVisible // ignore: cast_nullable_to_non_nullable
               as bool,
       status: null == status
           ? _self.status

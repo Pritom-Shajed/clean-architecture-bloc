@@ -2,11 +2,12 @@ import 'dart:io';
 
 import 'package:auth/src/core/configs/constants.dart';
 import 'package:auth/src/core/configs/get_platform.dart';
+import 'package:auth/src/core/injector/injector.dart';
 import 'package:auth/src/core/shared/asset_helper/asset_helper.dart';
 import 'package:auth/src/core/shared/asset_helper/assets.dart';
 import 'package:auth/src/core/utils/colors/app_colors.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
-import 'package:auth/src/injector.dart';
+import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 
 class KPageNotFound extends StatelessWidget {
@@ -29,7 +30,7 @@ class KPageNotFound extends StatelessWidget {
                 width: context.width * 0.35,
               ),
               Text(
-                'Error: $error',
+                '${t.errorOccured}: $error',
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Colors.red,
@@ -63,12 +64,11 @@ class KServerNotRunning extends StatelessWidget {
                   height: context.width * 0.35,
                   width: context.width * 0.35,
                 ),
-                const Text(
-                  'Server is not running! We are working on it. Sorry for the inconvenience.',
+                Text(
+                  '${t.errorOccured} ${t.pageNotFound}',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: context.text.labelLarge?.copyWith(
                     color: Colors.red,
-                    fontWeight: FontWeight.w600,
                   ),
                 ),
                 const SizedBox(height: 20),
@@ -79,15 +79,9 @@ class KServerNotRunning extends StatelessWidget {
                   onPressed: () {
                     if (sl<PT>().isNotWeb) {
                       exit(0);
-                    } else {
-                      // SnackBar.show(
-                      //   context,
-                      //   'Please close the browser tab and visit again.',
-                      //   isError: true,
-                      // );
                     }
                   },
-                  label: const Text('Exit'),
+                  label: Text(t.exit),
                   icon: const Icon(Icons.exit_to_app),
                 ),
               ],
@@ -119,7 +113,7 @@ class KDataNotFound extends StatelessWidget {
                 width: context.width * 0.15,
               ),
               Text(
-                msg ?? 'No data found!',
+                msg ?? t.noDataFound,
                 textAlign: TextAlign.center,
                 style: context.text.labelLarge,
               ),
@@ -152,7 +146,7 @@ class AccesDeniedPage extends StatelessWidget {
               ),
               const SizedBox(height: 20),
               Text(
-                'You are not authorized to access this page!\nIf you think this is a mistake, please contact your administrator.',
+                t.accessDenied,
                 textAlign: TextAlign.center,
                 style: context.text.labelLarge,
               ),

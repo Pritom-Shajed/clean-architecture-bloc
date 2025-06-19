@@ -16,7 +16,7 @@ class SvgAssets {
   SvgAssets._();
 
   static const String _basePath = 'assets/svgs';
-
+  
   static const String error = '$_basePath/error.svg';
   static const String theme = '$_basePath/theme.svg';
   static const String arrowDropdown = '$_basePath/arrow-dropdown.svg';
@@ -27,4 +27,14 @@ class SvgAssets {
   static const String system = '$_basePath/system.svg';
   static const String light = '$_basePath/light.svg';
   static const String dark = '$_basePath/dark.svg';
+  static const String wifi = '$_basePath/wifi.svg';
+  static const String wifiNo = '$_basePath/wifi-no.svg';
+}
+
+class PngAssets {
+  PngAssets._();
+
+  static const String _basePath = 'assets/png';
+
+  static const String avatar = '$_basePath/avatar.png';
 }

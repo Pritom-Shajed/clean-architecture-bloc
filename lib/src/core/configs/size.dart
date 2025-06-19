@@ -1,6 +1,5 @@
-import 'package:auth/src/injector.dart';
-import 'package:flutter/material.dart'
-    show Size, TextDirection, TextPainter, TextSpan, TextStyle;
+import 'package:auth/src/core/injector/injector.dart';
+import 'package:flutter/material.dart' show Size, TextDirection, TextPainter, TextSpan, TextStyle;
 
 import 'get_platform.dart';
 
@@ -10,8 +9,7 @@ double bottomBarSize = 80.0;
 double bottomViewPadding = 0.0;
 const double defaultPadding = 16.0;
 
-double get topBodyPadding =>
-    sl<PT>().isDesktop ? topBarSize + barSize : topBarSize + 30.0;
+double get topBodyPadding => sl<PT>().isDesktop ? topBarSize + barSize : topBarSize + 30.0;
 
 double get bottomBodyPadding => sl<PT>().isDesktop || bottomViewPadding == 0
     ? bottomBarSize + bottomViewPadding + 37

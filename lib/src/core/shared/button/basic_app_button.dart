@@ -1,3 +1,5 @@
+import 'package:auth/src/core/utils/colors/app_colors.dart';
+import 'package:auth/src/core/utils/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
 class BasicAppButton extends StatelessWidget {
@@ -6,13 +8,7 @@ class BasicAppButton extends StatelessWidget {
   final String title;
   final double? height;
   final double? width;
-  const BasicAppButton(
-      { this.onPressed,
-      this.isLoading = false,
-      this.title = '',
-      this.height,
-      this.width,
-      super.key});
+  const BasicAppButton({this.onPressed, this.isLoading = false, this.title = '', this.height, this.width, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,36 +19,29 @@ class BasicAppButton extends StatelessWidget {
     return ElevatedButton(
         onPressed: null,
         style: ElevatedButton.styleFrom(
-          disabledBackgroundColor: Colors.grey,
-          minimumSize:
-              Size(width ?? MediaQuery.sizeOf(context).width, height ?? 60),
+          disabledBackgroundColor: AppColors.grey,
+          minimumSize: Size(width ?? context.width, height ?? 60),
         ),
         child: const CircularProgressIndicator(
-          color: Colors.white,
+          color: AppColors.white,
         ));
   }
 
   Widget _initial(BuildContext context) {
     return Container(
-      decoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(16), boxShadow: [
-        BoxShadow(
-          color: const Color(0xff3461FD).withValues(alpha: 0.8),
-          offset: const Offset(0, 5),
-          blurRadius: 17,
-        )
-      ]),
-      child: ElevatedButton(
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(16), boxShadow: [
+          BoxShadow(
+            color: context.theme.primaryColor.withValues(alpha: 0.8),
+            offset: const Offset(0, 5),
+            blurRadius: 17,
+          )
+        ]),
+        child: ElevatedButton(
           onPressed: onPressed,
           style: ElevatedButton.styleFrom(
-            minimumSize:
-                Size(width ?? MediaQuery.sizeOf(context).width, height ?? 60),
+            minimumSize: Size(width ?? context.width, height ?? 60),
           ),
-          child: Text(
-            title,
-            style: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.w400),
-          )),
-    );
+          child: Text(title, style: context.text.bodyMedium?.copyWith(color: AppColors.white)),
+        ));
   }
 }

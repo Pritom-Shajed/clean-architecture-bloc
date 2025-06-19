@@ -1,5 +1,6 @@
-import 'package:auth/src/injector.dart';
 import 'package:auth/src/core/configs/constants.dart';
+import 'package:auth/src/core/injector/injector.dart';
+
 import '../../../../core/utils/extensions/extensions.dart';
 import '../../../../core/utils/logger/logger_helper.dart';
 import '../../domain/repositories/settings_repository.dart';
@@ -11,10 +12,8 @@ class SettingsRepositoryImpl implements SettingsRepository {
   Future<void> init() async {
     if (Boxes.appSettings.isEmpty) await _appSettingsInit();
     if (sl.isRegistered<AppSettings>()) sl.unregister<AppSettings>();
-    sl.registerSingleton<AppSettings>(
-        Boxes.appSettings.get(appName.toCamelWord) ?? AppSettings());
-    log.i(
-        'App Initiated with appSettings: ${sl<AppSettings>().firstRunDateTime}');
+    sl.registerSingleton<AppSettings>(Boxes.appSettings.get(appName.toCamelWord) ?? AppSettings());
+    log.i('App Initiated with appSettings: ${sl<AppSettings>().firstRunDateTime}');
     _listenForAppConfig();
   }
 
@@ -24,12 +23,10 @@ class SettingsRepositoryImpl implements SettingsRepository {
     await appSettings.saveData();
   }
 
-  void _listenForAppConfig() =>
-      Boxes.appSettings.watch(key: appName.toCamelWord).listen(
+  void _listenForAppConfig() => Boxes.appSettings.watch(key: appName.toCamelWord).listen(
         (_) {
           if (sl.isRegistered<AppSettings>()) sl.unregister<AppSettings>();
-          sl.registerSingleton<AppSettings>(
-              Boxes.appSettings.get(appName.toCamelWord) ?? AppSettings());
+          sl.registerSingleton<AppSettings>(Boxes.appSettings.get(appName.toCamelWord) ?? AppSettings());
         },
       );
 }

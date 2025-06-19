@@ -1,5 +1,6 @@
 import 'package:auth/src/core/shared/button/basic_app_button.dart';
 import 'package:auth/src/core/utils/extensions/extensions.dart';
+import 'package:auth/src/localization/app_locale.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:solar_icon_pack/solar_linear_icons.dart';
@@ -42,7 +43,7 @@ void confirmationDialog(
                     Align(
                       alignment: Alignment.bottomCenter,
                       child: BasicAppButton(
-                        title: 'Ok',
+                        title: t.ok,
                         onPressed: onConfirm,
                       ),
                     )

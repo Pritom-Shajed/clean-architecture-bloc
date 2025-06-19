@@ -1,6 +1,6 @@
-
 import 'package:auth/main.dart';
 import 'package:auth/src/core/configs/constants.dart';
+import 'package:auth/src/core/shared/app_bar.dart/k_app_bar.dart';
 import 'package:auth/src/features/settings/presentation/view/components/locale_tile.dart';
 import 'package:auth/src/features/settings/presentation/view/components/performance_overlay_tile.dart';
 import 'package:auth/src/features/settings/presentation/view/components/signout_tile.dart';
@@ -8,19 +8,15 @@ import 'package:auth/src/features/settings/presentation/view/components/theme_ti
 import 'package:auth/src/features/settings/presentation/view/components/url_config_tile.dart';
 import 'package:flutter/material.dart';
 
-class SettingsView extends StatelessWidget {
-  const SettingsView({super.key});
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
 
   static const name = 'settings';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Settings'),
-        centerTitle: true,
-        elevation: 0.0,
-      ),
+      appBar: KAppBar(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(6.0),

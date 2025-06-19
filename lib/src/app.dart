@@ -7,7 +7,7 @@ import 'package:auth/src/core/utils/theme/dark/dark_theme.dart';
 import 'package:auth/src/core/utils/theme/light/light_theme.dart';
 import 'package:auth/src/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:auth/src/features/home/presentation/bloc/home_bloc.dart';
-import 'package:auth/src/features/home/presentation/home_page.dart';
+import 'package:auth/src/features/home/presentation/view/home_page.dart';
 import 'package:auth/src/features/settings/data/models/locale/locale_model.dart';
 import 'package:auth/src/features/settings/data/models/theme/theme_model.dart';
 import 'package:auth/src/features/settings/presentation/bloc/locale/locale_bloc.dart';
@@ -22,8 +22,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
+import 'core/injector/injector.dart';
 import 'core/router/router.dart';
-import 'injector.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -53,14 +53,12 @@ class MyApp extends StatelessWidget {
           locale: context.watch<LocaleBloc>().state.locale.locale,
           localizationsDelegates: localizationsDelegates,
           supportedLocales: AppLocalizations.supportedLocales,
-          showPerformanceOverlay:
-              context.watch<PerformanceOverlayBloc>().state.isEnabled,
+          showPerformanceOverlay: context.watch<PerformanceOverlayBloc>().state.isEnabled,
           builder: EasyLoading.init(builder: (ctx, child) {
             t = AppLocalizations.of(ctx)!;
             topBarSize = ctx.padding.top;
             bottomViewPadding = ctx.padding.bottom;
-            log.i(
-                'App build. Height: ${ctx.height} px, Width: ${ctx.width} px');
+            log.i('App build. Height: ${ctx.height} px, Width: ${ctx.width} px');
             return MediaQuery(
               data: ctx.mq.copyWith(
                 devicePixelRatio: 1.0,
