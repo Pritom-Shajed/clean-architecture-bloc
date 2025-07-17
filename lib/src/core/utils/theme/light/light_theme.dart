@@ -10,7 +10,7 @@ const lightUiConfig = SystemUiOverlayStyle(
   systemNavigationBarColor: Colors.white,
   systemNavigationBarIconBrightness: Brightness.dark,
 );
-const appbarColor = Color(0xfffff6ee);
+
 const lightPrimaryColor = AppColors.primaryColor;
 const _headLineTextColor = AppColors.secondaryColor;
 const _iconColorSecondary = AppColors.secondaryColor;
