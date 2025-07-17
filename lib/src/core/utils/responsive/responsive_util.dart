@@ -17,8 +17,8 @@ class ResponsiveUtil {
   static const double mobileScale = 0.9;
 
   static double scaleSize(BuildContext context, double baseSize) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double pixelDensity = MediaQuery.of(context).devicePixelRatio;
+    double screenWidth = MediaQuery.sizeOf(context).width;
+    double pixelDensity = MediaQuery.devicePixelRatioOf(context);
     double scaleFactor;
 
     if (screenWidth >= maxDesktopWidth) {
